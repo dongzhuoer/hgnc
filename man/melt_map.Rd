@@ -24,6 +24,14 @@ turn a "wide" map into a "long" one
 \details{
 \href{../doc/map-id-to-symbol.html}{this vignette}
 }
+\section{to do}{
+
+\enumerate{
+\item testthat whether it works on real data
+\item more generic interface (untangle some code from \code{lem4::read_gse()})
+}
+}
+
 \examples{
 tibble::tribble(
     ~symbol, ~id, ~foobar,

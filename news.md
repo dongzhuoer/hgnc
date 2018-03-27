@@ -1,6 +1,5 @@
 
 
-## x.y.z
+## 0.1.0
 
-1. feature 1
-1. feature 2
+1. stand alone from lem4

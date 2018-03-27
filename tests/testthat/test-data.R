@@ -2,23 +2,32 @@ context("Testing data")
 
 
 
-
-
-test_that('as_symbol_from_symbol()', {
-	expect_identical(as_symbol_from_symbol(c('ANKLE2', 'A1BG', '-1')), c('ANKLE2', 'A1BG', NA));
-
-# assertthat::assert_that(
-# 	hugo_symbol %>% {.[!stringr::str_detect(., '^[-@\\w]+')]} %>% libzhuoer::print_or_T(),
-# 	entrez2symbol$entrez %>% {.[!stringr::str_detect(., '^\\d+$')]} %>% libzhuoer::print_or_T(),
-# 	genebank2symbol$genebank  %>% {.[!stringr::str_detect(., '^[\\w\\d\\.]+$')]} %>% libzhuoer::print_or_T(),
-# 	#ids$unigene %>% {.[!stringr::str_detect(., '^Hs\\.\\d+$')]} %>% libzhuoer::print_or_T(),
-# 	msg = 'some elements of certain id contains multiple values'
-# ) -> dev.null
+test_that('elements in map only contain a single value', {
+	skip('see lem4\'s test `make_platform_type() sep_pattern`')
+})
 
 
 
-	# lapply(maps, . %>% dplyr::group_by_at(2) %>% dplyr::summarise(n = dplyr::n()) %>% filter(n > 1L) %>% {if (nrow(.) == 0L) T else print(.)} %>% assertthat::assert_that(msg = 'a single id mapped to multiple symbols')) -> dev.null
+test_that('map should be umambiguous (the same id cann\'t correspond map to different values)', {
+	#" modify it to see whether the test works (e.g. change `3` to `2`)
+	testthat::expect_identical(tibble::tibble(c(1, 2, 3), c('A', 'B', 'C'))[[1]] %>% anyDuplicated, 0L);
 
-# lapply(names(maps), . %>% {message('The coverage of ', str_pad(., 8, 'r'), ' is ', length(unique(maps[[.]]$symbol)) / length(hgnc$symbol))}) -> dev.null
-
+	testthat::expect_identical(entrez2symbol[[1]] %>% anyDuplicated, 0L);
+	testthat::expect_identical(genebank2symbol[[1]] %>% anyDuplicated, 0L);
+	testthat::expect_identical(entrez_or_symbol2symbol[[1]] %>% anyDuplicated, 0L);
+	testthat::expect_identical(unigene2entrez[[1]] %>% anyDuplicated, 0L);
 });
+
+
+
+testthat::test_that('map should be effective (no NA)', {
+	#" modify it to see whether the test works (e.g. change `2` to `NA`)
+	testthat::expect_true(tibble::tibble(c(1, 2), c('A', 'B')) %>% dplyr::filter_all(dplyr::any_vars(is.na(.))) %>% libzhuoer::print_or_T());
+
+	testthat::expect_true(entrez2symbol %>% dplyr::filter_all(dplyr::any_vars(is.na(.))) %>% libzhuoer::print_or_T());
+	testthat::expect_true(genebank2symbol %>% dplyr::filter_all(dplyr::any_vars(is.na(.))) %>% libzhuoer::print_or_T());
+	testthat::expect_true(entrez_or_symbol2symbol %>% dplyr::filter_all(dplyr::any_vars(is.na(.))) %>% libzhuoer::print_or_T());
+	testthat::expect_true(unigene2entrez %>% dplyr::filter_all(dplyr::any_vars(is.na(.))) %>% libzhuoer::print_or_T());
+});
+
+

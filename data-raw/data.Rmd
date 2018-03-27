@@ -1,5 +1,5 @@
 
-```{r}
+```{r clean}
 dir('data', full.names = T) %>% file.remove
 ```
 
@@ -12,6 +12,11 @@ hgnc <- hgnc_all %>% dplyr::filter(status == 'Approved')
 hugo_symbol <- hgnc$symbol;
 
 entrez2symbol <- dplyr::select(hgnc, entrez = entrez_id, symbol) %>% hgnc::qualify_map() %T>% print
+
+entrez_or_symbol2symbol <- dplyr::bind_rows(
+	tibble::tibble(entrez_or_symbol = hugo_symbol, symbol = hugo_symbol), 
+	dplyr::rename(entrez2symbol, entrez_or_symbol = 'entrez')
+) %>% hgnc::qualify_map() %T>% print
 
 genebank2symbol <- dplyr::bind_rows(
 	dplyr::select(hgnc, symbol, genebank = 'ena'),
@@ -27,14 +32,15 @@ unigene2entrez <- libzhuoer::read_char_tsv('data-raw/gene2unigene.tsv.gz') %>%
 	dplyr::select(2, 1) %>% hgnc::qualify_map() %>%
 	dplyr::select(unigene = 1, entrez = 2) %T>% print
 
-usethis::use_data(hugo_symbol, entrez2symbol, genebank2symbol, unigene2entrez, overwrite = T);
+usethis::use_data(hugo_symbol, entrez2symbol, genebank2symbol, entrez_or_symbol2symbol, unigene2entrez, overwrite = T);
 ```
 
 
 
-```{r}
-devtools::install(quiet = T)
-devtools::test()
+```{r rebuild}
+system('R CMD INSTALL --no-multiarch --with-keep.source .')
+devtools::reload();
+devtools::test();
 ```
 
 

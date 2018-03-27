@@ -5,6 +5,11 @@
 #'
 #' @details [this vignette](../doc/map-id-to-symbol.html)
 #'
+#' @section to do:
+#'
+#' 1. testthat whether it works on real data
+#' 1. more generic interface (untangle some code from `lem4::read_gse()`)
+#'
 #' @param df tibble. rows containing NA in any of following variables are removed.
 #' @param id string. name of a character variable in `df`, its elements must be unique and can only contain _one_ value each
 #' @param measure string. name of a character variable in `df`, its elements needn't to be unique and contain multiple values (we use [stringr::str_split()] to sperate them by `sep_pattern`)
