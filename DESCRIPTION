@@ -8,6 +8,6 @@ Description: map accession from other database to hugo gene symbol
 License: AGPL-3.0
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Roxygen: list(markdown = TRUE, roclets=c('rd', 'collate', 'namespace', 'vignette'))
 Imports: magrittr

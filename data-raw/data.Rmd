@@ -1,0 +1,52 @@
+
+```{r}
+dir('data', full.names = T) %>% file.remove
+```
+
+
+```{r}
+
+hgnc_all <- libzhuoer::read_char_tsv('data-raw/hgnc_complete_set.txt.gz') 
+hgnc <- hgnc_all %>% dplyr::filter(status == 'Approved')
+
+hugo_symbol <- hgnc$symbol;
+
+entrez2symbol <- dplyr::select(hgnc, entrez = entrez_id, symbol) %>% hgnc::qualify_map() %T>% print
+
+genebank2symbol <- dplyr::bind_rows(
+	dplyr::select(hgnc, symbol, genebank = 'ena'),
+	dplyr::select(hgnc, symbol, genebank = 'refseq_accession')
+) %>% hgnc::melt_map('symbol', 'genebank', '\\|') %>% dplyr::select(2:1) %T>% 
+	{message('collapsing ', length(stringr::str_subset(.[[1]], '\\.\\d+$')), ' transcripts to genes')} %T>% 
+	{message('If this number is too bug,'); .} %T>% 
+	{message('check whether different transcripts of the same gene have different symbols')} %>%
+	dplyr::mutate_at(1, . %>% stringr::str_remove('\\.\\d+$')) %>% hgnc::qualify_map() %T>% print
+
+unigene2entrez <- libzhuoer::read_char_tsv('data-raw/gene2unigene.tsv.gz') %>% 
+	dplyr::filter_at(2, dplyr::any_vars(stringr::str_detect(., '^Hs\\.'))) %>% 
+	dplyr::select(2, 1) %>% hgnc::qualify_map() %>%
+	dplyr::select(unigene = 1, entrez = 2) %T>% print
+
+usethis::use_data(hugo_symbol, entrez2symbol, genebank2symbol, unigene2entrez, overwrite = T);
+```
+
+
+
+```{r}
+devtools::install(quiet = T)
+devtools::test()
+```
+
+
+
+```{r}
+mapply(
+	function(symbol, name) {
+		coverage <- symbol %>% unique %>% length %>% {./length(hgnc::hugo_symbol)};
+		message(name, ' covers ', format(coverage, F, 6), ' symbols')
+	},
+	list(hgnc::entrez2symbol$symbol, hgnc::genebank2symbol$symbol, 
+		 hgnc::as_symbol_from_unigene(hgnc::unigene2entrez$unigene)),
+	c('entrez  ', 'genebank', 'unigene ')
+) -> dev.null
+```
