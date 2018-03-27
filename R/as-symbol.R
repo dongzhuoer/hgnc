@@ -15,9 +15,16 @@ as_symbol_from_entrez <- function(entrez) {
 }
 
 #' @export
-as_symbol_from_genebank <- function(genebank) {
-	genebank %<>% stringr::str_remove('\\.\\d+$');
-	map_1_to_2(genebank, hgnc::genebank2symbol)
+as_symbol_from_ensembl <- function(ensembl) {
+	map_1_to_2(ensembl, hgnc::ensembl2symbol)
+}
+
+# update 'Caution' in readme.md if you edit it
+#' @export
+as_symbol_from_genbank <- function(genbank) {
+	genbank %<>% stringr::str_remove('\\.\\d+$');
+
+	map_1_to_2(genbank, hgnc::genbank2symbol)
 }
 
 #' @export

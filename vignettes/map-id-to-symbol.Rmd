@@ -1,0 +1,47 @@
+---
+title: "map other ids to hugo gene symbol"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{map other ids to hugo gene symbol}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+
+library(magrittr)
+```
+
+[melt_map](../html/melt_map.html), [cast_map](../html/cast_map.html)
+
+the work flow is kinds of like this
+
+```{r}
+#platform <- 
+tibble::tribble(  
+	~probe, ~id,
+    'probe1', 'id1|id2',
+    'probe2', 'id3'
+) %T>% print %>%
+    hgnc::melt_map('probe', 'id', '\\|')
+```
+
+
+```{r}
+tibble::tribble(
+    ~probe, ~symbol,
+    'probe1', 'symbol1',
+    'probe1', 'symbol2',
+    'probe2', 'symbol3'
+) %T>% print %>%
+    hgnc::cast_map('probe', 'symbol', ' /// ')
+```
+
+So, based on a pre-defined map between `id` and `symbol` (such as `entrez2symbol`), we can transform any user supplied GPL file to standard chip file ready for GSEA
+

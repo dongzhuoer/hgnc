@@ -10,16 +10,21 @@ testthat::test_that('as_symbol_from_entrez()', {
 	testthat::expect_identical(as_symbol_from_entrez(c('503538', '144568', '-1')), c('A1BG-AS1', 'A2ML1', NA));
 });
 
+testthat::test_that('as_symbol_from_ensembl()', {
+	testthat::expect_identical(as_symbol_from_ensembl(c('ENSG00000148584', 'ENSG00000184389', '-1')), c('A1CF', 'A3GALT2', NA));
+});
+
+
 testthat::test_that('as_symbol_from_entrez_or_symbol()', {
 	testthat::expect_identical(as_symbol_from_entrez_or_symbol(c('503538', 'ANKLE2', 'A1BG', '144568', '-1')), c('A1BG-AS1', 'ANKLE2', 'A1BG', 'A2ML1', NA));
 });
 
-testthat::test_that('as_symbol_from_genebank()', {
-	testthat::expect_identical(as_symbol_from_genebank(c('BX647329', 'AY005822', '-1')), c('A2M', 'ACOT2', NA));
+testthat::test_that('as_symbol_from_genbank()', {
+	testthat::expect_identical(as_symbol_from_genbank(c('BX647329', 'AY005822', '-1')), c('A2M', 'ACOT2', NA));
 });
 
-testthat::test_that('as_symbol_from_genebank() ignores transcript id', {
-	testthat::expect_identical(as_symbol_from_genebank('AK056168.1'), 'SPATA33');
+testthat::test_that('as_symbol_from_genbank() ignores transcript id', {
+	testthat::expect_identical(as_symbol_from_genbank('AK056168.1'), 'SPATA33');
 });
 
 testthat::test_that('as_symbol_from_unigene()', {

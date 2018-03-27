@@ -12,9 +12,6 @@ qualify_map(df)
 \value{
 tibble.
 }
-\description{
-qualify a map to be umambiguous and effective (no NA)
-}
 \examples{
 tibble::tribble(
     ~from, ~to,

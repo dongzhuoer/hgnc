@@ -9,12 +9,14 @@ matrix:
 cache: packages
 latex: false
 pandoc: false
-fortran: false
+fortran: true
 git:
   depth: false
 
 before_install:
   - R -e "if (Sys.getenv('TRAVIS_EVENT_TYPE') == 'cron') unlink(dir(.libPaths()[1], full.names = T), recursive = T)"
+  - R --slave -e "source('https://gist.github.com/dongzhuoer/dd332dc13ef06ee4447f69aaacbdcb1a/raw/b4b5bc35183338f87235ec1691396d9e5cdf7a8d/move-recommended-packages-to-user-library-for-travis.R')"
+  - R --slave -e "update.packages(ask = F)"
 install:
   - R --slave -e "if (!('devtools' %in% .packages(T))) install.packages('devtools')"
   - R --slave -e "devtools::install_github('r-lib/devtools')"

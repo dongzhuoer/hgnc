@@ -18,9 +18,6 @@ melt_map(df, id, measure, sep_pattern = NA)
 \value{
 tibble. column names are \code{id} and \code{measure}.
 }
-\description{
-turn a "wide" map into a "long" one
-}
 \details{
 \href{../doc/map-id-to-symbol.html}{this vignette}
 }
@@ -44,4 +41,3 @@ tibble::tribble(
 \seealso{
 Other mapping: \code{\link{cast_map}}
 }
-\concept{mapping}

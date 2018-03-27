@@ -17,5 +17,11 @@ Imports:
     dplyr,
     rlang,
     plyr
+Suggests: 
+    testthat,
+    roxygen2,
+    knitr,
+    rmarkdown
 Remotes:
     dongzhuoer/libzhuoer
+VignetteBuilder: knitr

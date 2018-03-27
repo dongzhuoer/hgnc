@@ -18,10 +18,6 @@ cast_map(df, id, measure, collapse = " /// ")
 \value{
 tibble. column names are \code{id} and \code{measure}.
 }
-\description{
-turn a "long" map into a "wide" one
-}
 \seealso{
 Other mapping: \code{\link{melt_map}}
 }
-\concept{mapping}
