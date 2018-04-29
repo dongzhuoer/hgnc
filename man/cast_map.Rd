@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapping.R
 \name{cast_map}
 \alias{cast_map}
-\title{turn a "long" map into a "wide" one}
+\title{convert a "long" map into a "wide" one}
 \usage{
 cast_map(df, id, measure, collapse = " /// ")
 }
@@ -18,6 +18,10 @@ cast_map(df, id, measure, collapse = " /// ")
 \value{
 tibble. column names are \code{id} and \code{measure}.
 }
+\description{
+convert a "long" map into a "wide" one
+}
 \seealso{
 Other mapping: \code{\link{melt_map}}
 }
+\concept{mapping}

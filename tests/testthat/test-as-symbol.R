@@ -1,6 +1,5 @@
 testthat::context("Testing as-symbol.R")
-
-
+if (basename(getwd()) == 'testthat') setwd('../..')
 
 testthat::test_that('as_symbol_from_symbol()', {
 	testthat::expect_identical(as_symbol_from_symbol(c('ANKLE2', 'A1BG', '-1')), c('ANKLE2', 'A1BG', NA));

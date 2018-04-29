@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapping.R
 \name{qualify_map}
 \alias{qualify_map}
-\title{qualify a map to be umambiguous and effective (no NA)}
+\title{qualify a map to be "square"}
 \usage{
 qualify_map(df)
 }
@@ -11,6 +11,9 @@ qualify_map(df)
 }
 \value{
 tibble.
+}
+\description{
+qualify a map to be umambiguous and effective (no NA)
 }
 \examples{
 tibble::tribble(

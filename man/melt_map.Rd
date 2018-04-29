@@ -2,7 +2,7 @@
 % Please edit documentation in R/mapping.R
 \name{melt_map}
 \alias{melt_map}
-\title{turn a "wide" map into a "long" one}
+\title{convert a "wide" map into a "long" one}
 \usage{
 melt_map(df, id, measure, sep_pattern = NA)
 }
@@ -18,18 +18,11 @@ melt_map(df, id, measure, sep_pattern = NA)
 \value{
 tibble. column names are \code{id} and \code{measure}.
 }
-\details{
-\href{../doc/map-id-to-symbol.html}{this vignette}
+\description{
+convert a "wide" map into a "long" one
 }
-\section{to do}{
-
-\enumerate{
-\item testthat whether it works on real data
-\item more generic interface (untangle some code from \code{lem4::read_gse()})
-}
-}
-
 \examples{
+library(magrittr)
 tibble::tribble(
     ~symbol, ~id, ~foobar,
     'A|B', '1', 'foo',
@@ -41,3 +34,4 @@ tibble::tribble(
 \seealso{
 Other mapping: \code{\link{cast_map}}
 }
+\concept{mapping}

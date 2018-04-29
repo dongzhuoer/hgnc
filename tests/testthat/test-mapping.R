@@ -1,4 +1,5 @@
 context("Testing mapping.R")
+if (basename(getwd()) == 'testthat') setwd('../..')
 
 # test data --------------------
 
@@ -90,11 +91,6 @@ test_that("cast_map()", {
 
 test_that("cast_map() doesn\'t transfigure square_map", {
 	expect_identical(cast_map(square_map, 'symbol', 'id'), square_map);
-	expect_identical(cast_map(square_map, 'symbol', 'id', ' '), square_map);
-	expect_identical(cast_map(square_map, 'symbol', 'id', '|'), square_map);
-	expect_identical(cast_map(square_map, 'symbol', 'id', ','), square_map);
-	expect_identical(cast_map(square_map, 'symbol', 'id', ';'), square_map);
-	expect_identical(cast_map(square_map, 'symbol', 'id', '\t'), square_map);
 });
 
 

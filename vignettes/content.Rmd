@@ -1,0 +1,69 @@
+---
+title: "package content"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{package content}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = F,
+  comment = ''
+)
+
+library(magrittr)
+```
+
+Still a draft, to be finished.
+
+```{r}
+library(hgnc)
+```
+
+after you read the `vignette('hgnc')` 
+
+# 1
+
+It achieves this by two modules: a generic interface which convert between "wide" map and "long" map.
+
+`melt_map()`
+
+`cast_map()`
+
+`qualify_map()` make sure a map is "square". id-symbol has to fulfill this requirement
+
+For both .., `soft` can include other columns than `ID` and `Ensembl`, which will just be ignored.
+
+# 2
+
+
+ to make things worse, the separator is not definite (it can be ` `, ` 、`, ` \\\ `).
+
+https://github.com/dongzhuoer/rGEO/blob/master/R/platform.R#L187-L194
+
+# 3 
+
+as_symbol
+
+melt `hgnc_complete_set.txt.gz`
+
+    for example, Entrez gene ID
+   ```r
+   library(magrittr)
+   # the exact parameter should be character, but integer or numeric is also acceptable
+   c(23141, 5925) %>% hgnc::as_symbol_from_entrez() # 
+   ```
+
+# other feature
+
+
+
+
+to do
+
+So, based on a pre-defined map between `id` and `symbol` (such as `entrez2symbol`), we can transform any user supplied GPL file to standard chip file ready for GSEA
+

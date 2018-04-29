@@ -1,5 +1,5 @@
 context("Testing data")
-
+if (basename(getwd()) == 'testthat') setwd('../..')
 
 
 test_that('elements in map only contain a single value', {

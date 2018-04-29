@@ -1,14 +1,7 @@
 
 
 
-#' @title turn a "wide" map into a "long" one
-#'
-#' @details [this vignette](../doc/map-id-to-symbol.html)
-#'
-#' @section to do:
-#'
-#' 1. testthat whether it works on real data
-#' 1. more generic interface (untangle some code from `lem4::read_gse()`)
+#' @title convert a "wide" map into a "long" one
 #'
 #' @param df tibble. rows containing NA in any of following variables are removed.
 #' @param id string. name of a character variable in `df`, its elements must be unique and can only contain _one_ value each
@@ -21,6 +14,7 @@
 #' @family mapping
 #'
 #' @examples
+#' library(magrittr)
 #' tibble::tribble(
 #'     ~symbol, ~id, ~foobar,
 #'     'A|B', '1', 'foo',
@@ -42,7 +36,7 @@ melt_map <- function(df, id, measure, sep_pattern = NA) {
 }
 
 
-#' @title turn a "long" map into a "wide" one
+#' @title convert a "long" map into a "wide" one
 #'
 #' @param df tibble. rows containing NA in any of following variables are removed.
 #' @param id string. name of a character variable in `df`, its elements can only contain _one_ value each
@@ -66,7 +60,9 @@ cast_map <- function(df, id, measure, collapse = ' /// ') {
 
 
 
-#' @title qualify a map to be umambiguous and effective (no NA)
+#' @title qualify a map to be "square"
+#' 
+#' @description qualify a map to be umambiguous and effective (no NA)
 #'
 #' @param df tibble.
 #'
