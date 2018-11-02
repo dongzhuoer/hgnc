@@ -12,14 +12,12 @@ This package serves a utility for [rGEO](https://github.com/dongzhuoer/rGEO).
 
 ```r
 if (!('devtools' %in% .packages(T))) install.packages('devtools');
-devtools::install_github('dongzhuoer/hgnc');
+remotes::install_github('dongzhuoer/hgnc');
 ```
 
 ## Usage
 
 refer to `vignette('hgnc')`.
-
-
 
 ## Resources
 

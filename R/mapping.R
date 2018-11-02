@@ -1,4 +1,6 @@
-
+#' @importFrom magrittr %<>%
+#'
+NULL
 
 
 #' @title convert a "wide" map into a "long" one
@@ -14,7 +16,6 @@
 #' @family mapping
 #'
 #' @examples
-#' library(magrittr)
 #' tibble::tribble(
 #'     ~symbol, ~id, ~foobar,
 #'     'A|B', '1', 'foo',

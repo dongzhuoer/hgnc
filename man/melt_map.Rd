@@ -22,7 +22,6 @@ tibble. column names are \code{id} and \code{measure}.
 convert a "wide" map into a "long" one
 }
 \examples{
-library(magrittr)
 tibble::tribble(
     ~symbol, ~id, ~foobar,
     'A|B', '1', 'foo',

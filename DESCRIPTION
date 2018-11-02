@@ -10,7 +10,7 @@ BugReports: https://github.com/dongzhuoer/hgnc/issues
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.1.0
+RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE, roclets=c('rd', 'collate', 'namespace'))
 Imports: 
     libzhuoer,
@@ -19,6 +19,12 @@ Imports:
     dplyr,
     rlang,
     plyr
+Suggests: 
+    devtools,
+    testthat,
+    roxygen2,
+    rmarkdown,
+    callr
 Remotes:
     dongzhuoer/libzhuoer
 VignetteBuilder: knitr
