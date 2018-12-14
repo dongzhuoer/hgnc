@@ -3,9 +3,7 @@
 
 ## Overview
 
-This package serves a utility for [rGEO](https://github.com/dongzhuoer/rGEO). 
-    It convert a probe-to-geneID map to a probe-to-symbol map. (here **geneID** 
-    refers to entrez gene ID, ensemble gene ID, RefSeq accession, etc.)
+This package serves a utility for [rGEO](https://github.com/dongzhuoer/rGEO).  It convert a probe-to-geneID map to a probe-to-symbol map. (here **geneID**  refers to entrez gene ID, ensemble gene ID, RefSeq accession, etc.)
 
 
 ## Installation

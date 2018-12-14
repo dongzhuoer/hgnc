@@ -1,7 +1,7 @@
 Package: hgnc
 Type: Package
 Title: map common gene ID (accession) to HUGO gene symbol
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
     role = c("aut", "cre"))
 Description: refer to https://dongzhuoer.github.io/hgnc
@@ -20,11 +20,7 @@ Imports:
     rlang,
     plyr
 Suggests: 
-    devtools,
-    testthat,
-    roxygen2,
-    rmarkdown,
-    callr
+    testthat
 Remotes:
     dongzhuoer/libzhuoer
-VignetteBuilder: knitr
+VignetteBuilder: knitr, rmarkdown

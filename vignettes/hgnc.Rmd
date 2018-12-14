@@ -2,7 +2,7 @@
 title: "Introduction to hgnc"
 author: "Zhuoer Dong"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: prettydoc::html_pretty
 vignette: >
   %\VignetteIndexEntry{Introduction to hgnc}
   %\VignetteEngine{knitr::rmarkdown}

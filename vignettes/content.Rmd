@@ -2,7 +2,7 @@
 title: "package content"
 author: "Zhuoer Dong"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: prettydoc::html_pretty
 vignette: >
   %\VignetteIndexEntry{package content}
   %\VignetteEngine{knitr::rmarkdown}
