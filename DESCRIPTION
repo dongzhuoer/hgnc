@@ -5,7 +5,7 @@ Version: 0.2.0
 Authors@R: person("Zhuoer", "Dong", email = "dongzhuoer@mail.nankai.edu.cn", 
     role = c("aut", "cre"))
 Description: refer to https://dongzhuoer.github.io/hgnc
-URL: https://github.com/dongzhuoer/hgnc
+URL: https://dongzhuoer.github.io/hgnc, https://github.com/dongzhuoer/hgnc
 BugReports: https://github.com/dongzhuoer/hgnc/issues
 License: file LICENSE
 Encoding: UTF-8
