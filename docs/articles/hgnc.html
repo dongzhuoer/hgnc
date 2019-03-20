@@ -94,7 +94,7 @@
       <h1>Introduction to hgnc</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2018-12-24</h4>
+            <h4 class="date">2019-03-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/hgnc.Rmd"><code>vignettes/hgnc.Rmd</code></a></small>
       <div class="hidden name"><code>hgnc.Rmd</code></div>
@@ -124,7 +124,7 @@
 10 200084_at   ENSG00000110696                                        </code></pre>
 <p>to a probe-symbol map <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/melt_map.html">melt_map</a></span>(<span class="st">'ID'</span>, <span class="st">'Ensembl'</span>, <span class="st">' /// '</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="st">'symbol'</span> =<span class="st"> </span><span class="kw"><a href="../reference/as_symbol.html">as_symbol_from_ensembl</a></span>(Ensembl)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/mutate">mutate</a></span>(<span class="st">'symbol'</span> =<span class="st"> </span><span class="kw"><a href="../reference/as_symbol.html">as_symbol_from_ensembl</a></span>(Ensembl)) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb9-3" title="3"><span class="st">    </span><span class="kw"><a href="../reference/cast_map.html">cast_map</a></span>(<span class="st">'ID'</span>, <span class="st">'symbol'</span>, <span class="st">' /// '</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
    ID          symbol          
@@ -250,14 +250,14 @@
 </tbody>
 </table>
 <p>and use the following code <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">probe2id &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(  </a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">probe2id &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
 <a class="sourceLine" id="cb11-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
 <a class="sourceLine" id="cb11-3" title="3">    <span class="st">'probe4'</span>, <span class="st">'id4'</span>,</a>
 <a class="sourceLine" id="cb11-4" title="4">    <span class="st">'probe5'</span>, <span class="st">'id5'</span>,</a>
 <a class="sourceLine" id="cb11-5" title="5">    <span class="st">'probe6'</span>, <span class="st">'id6'</span></a>
 <a class="sourceLine" id="cb11-6" title="6">)</a>
 <a class="sourceLine" id="cb11-7" title="7"></a>
-<a class="sourceLine" id="cb11-8" title="8">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(  </a>
+<a class="sourceLine" id="cb11-8" title="8">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
 <a class="sourceLine" id="cb11-9" title="9">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
 <a class="sourceLine" id="cb11-10" title="10">    <span class="st">'id5'</span>, <span class="st">'symbol5'</span>,</a>
 <a class="sourceLine" id="cb11-11" title="11">    <span class="st">'id6'</span>, <span class="st">'symbol6'</span>,</a>
@@ -265,7 +265,7 @@
 <a class="sourceLine" id="cb11-13" title="13">) </a>
 <a class="sourceLine" id="cb11-14" title="14"></a>
 <a class="sourceLine" id="cb11-15" title="15">probe2symbpl &lt;-<span class="st"> </span>probe2id <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-16" title="16"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<a class="sourceLine" id="cb11-16" title="16"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/mutate">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -279,7 +279,7 @@
 <a href="#key-difficulty" class="anchor"></a>key difficulty</h2>
 <p>Back the original problem, you can find that its fairly easy to “replace” <code>'id4'</code> with <code>'symbol4'</code>, <code>'id5'</code> with <code>'symbol5'</code>, etc (thanks to <code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code>). But how can you “replace” the <code>'id1'</code> and <code>'id2'</code> inside <code>'id1 | id2'</code>?</p>
 <p>That is what I meet when I want to address a <a href="https://github.com/dongzhuoer/rGEO">biological question</a>, as you can see in the 9th line of <code>probe2ensembl</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/slice">slice</a></span>(<span class="dv">9</span>)</a></code></pre></div>
 <pre><code># A tibble: 1 x 2
   ID          Ensembl                                                
   &lt;chr&gt;       &lt;chr&gt;                                                  
@@ -290,7 +290,7 @@
 <h2 class="hasAnchor">
 <a href="#solution" class="anchor"></a>solution</h2>
 <p>Inspired by <a href="https://github.com/hadley/reshape"><strong>reshape2</strong></a>, I choose to “melt”</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">probe2id_wide &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(  </a>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">probe2id_wide &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
 <a class="sourceLine" id="cb17-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
 <a class="sourceLine" id="cb17-3" title="3">    <span class="st">'probe1'</span>, <span class="st">'id1 | id2'</span>,</a>
 <a class="sourceLine" id="cb17-4" title="4">    <span class="st">'probe2'</span>, <span class="st">'id3'</span></a>
@@ -305,7 +305,7 @@
 3 probe2 id3  </code></pre>
 <p>I call the former “wide” map and the latter “long” map.</p>
 <p>Then use the code in <a href="#solve-a-simpler-one">simpler problem</a> to map id to symbol</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/tibble/topics/tribble">tribble</a></span>(  </a>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
 <a class="sourceLine" id="cb20-2" title="2">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
 <a class="sourceLine" id="cb20-3" title="3">    <span class="st">'id1'</span>, <span class="st">'symbol1'</span>,</a>
 <a class="sourceLine" id="cb20-4" title="4">    <span class="st">'id2'</span>, <span class="st">'symbol2'</span>,</a>
@@ -313,7 +313,7 @@
 <a class="sourceLine" id="cb20-6" title="6">) </a>
 <a class="sourceLine" id="cb20-7" title="7"></a>
 <a class="sourceLine" id="cb20-8" title="8">probe2symbol_long &lt;-<span class="st"> </span>probe2id_long <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-9" title="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<a class="sourceLine" id="cb20-9" title="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/mutate">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -368,13 +368,13 @@
  8 2000… Homo sapiens     Exemplar seque… GenBank          g4504444        
  9 2000… Homo sapiens     Exemplar seque… GenBank          g4506712        
 10 2000… Homo sapiens     Exemplar seque… GenBank          g4506684        
-# ... with 648 more rows, and 6 more variables: `UniGene ID` &lt;chr&gt;, `Gene
+# … with 648 more rows, and 6 more variables: `UniGene ID` &lt;chr&gt;, `Gene
 #   Title` &lt;chr&gt;, `Gene Symbol` &lt;chr&gt;, Ensembl &lt;chr&gt;, ORF &lt;chr&gt;,
 #   SPOT_ID &lt;chr&gt;</code></pre>
 </li>
 <li>
 <p>subset part of the table for the purpose of demostration</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">probe2ensembl &lt;-<span class="st"> </span>soft.table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">probe2ensembl &lt;-<span class="st"> </span>soft.table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/select">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/slice">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
    ID          Ensembl                                                
    &lt;chr&gt;       &lt;chr&gt;                                                  
@@ -398,7 +398,7 @@
 <p>In general:</p>
 <ol style="list-style-type: lower-alpha">
 <li>
-<code><a href="http://dplyr.tidyverse.org/reference/mutate.html">dplyr::transmute</a></code> preserves <code>probe2id$probe</code> - <code>probe2id$id</code> relationship by <em>position</em>
+<code><a href="https://www.rdocumentation.org/packages/dplyr/topics/mutate">dplyr::transmute</a></code> preserves <code>probe2id$probe</code> - <code>probe2id$id</code> relationship by <em>position</em>
 </li>
 <li>
 <code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code> finds <code>probe2id$id</code> - <code>id2symbol$id</code> relationship by <em>value</em>
@@ -421,20 +421,20 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <li><p>Computer is very foolish, it can’t convert <code>'id1 | id2'</code> to <code>'symbol1 | symbol2'</code> as you can easily achieve even without thinking. In programming, the only way is to search <code>'id1'</code> in <code>'id1 | id2'</code> and replace with <code>'symbol'</code> if it find one, then search <code>'id2'</code>, <code>'id3'</code>, etc. This will cause a severe poor performance.</p></li>
 <li>
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/dplyr/topics/sample">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol    
-   &lt;chr&gt;           &lt;chr&gt;     
- 1 ENSG00000223772 GEMIN8P3  
- 2 ENSG00000129932 DOHH      
- 3 ENSG00000149932 TMEM219   
- 4 ENSG00000261715 LINC01477 
- 5 ENSG00000130755 GMFG      
- 6 ENSG00000260001 TGFBR3L   
- 7 ENSG00000222122 RNU6-648P 
- 8 ENSG00000224730 LILRB1-AS1
- 9 ENSG00000138231 DBR1      
-10 ENSG00000241529 RN7SL767P </code></pre>
+   ensembl         symbol   
+   &lt;chr&gt;           &lt;chr&gt;    
+ 1 ENSG00000250185 RCC2P8   
+ 2 ENSG00000242876 RN7SL812P
+ 3 ENSG00000187657 TSPY13P  
+ 4 ENSG00000172273 HINFP    
+ 5 ENSG00000125879 OTOR     
+ 6 ENSG00000148337 CIZ1     
+ 7 ENSG00000101639 CEP192   
+ 8 ENSG00000069812 HES2     
+ 9 ENSG00000167105 TMEM92   
+10 ENSG00000283063 TRBV6-2  </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
