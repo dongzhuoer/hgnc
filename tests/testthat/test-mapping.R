@@ -1,5 +1,5 @@
 context("Testing mapping.R")
-if (basename(getwd()) == 'testthat') setwd('../..')  # workspace is reset per file
+setwd(here::here(''))  # workspace is reset per file
 
 # test data --------------------
 
