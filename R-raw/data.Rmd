@@ -1,23 +1,26 @@
 ---
 title: processing raw data to package data
+date: "`r Sys.Date()`"
 ---
 
-```{r include=FALSE}
-assertthat::assert_that(
-    knitr::current_input() %>% paste0('R-raw/', .) %>% file.exists(),
-    msg = 'Please set knitr root directory to project directory! You may try running `rmarkdown::render("data-raw/data.Rmd")` at project directory or clicking `Knit` button on the top of this document in RStudio.'
-)
+```{r knitr-setup, include=FALSE}
+knitr::opts_knit$set(root.dir = here::here(''))
+knitr::opts_chunk$set(collapse = T)
 ```
 
 
+
+# clean
+
 ```{r clean, include=FALSE}
-dir('data', full.names = T) %>% file.remove()
+dir(here::here('data'), full.names = T) %>% file.remove()
 rm(list = ls(envir = globalenv(), all = T))
 ```
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(collapse = T)
-```
+
+
+# Process raw data
+
 
 `hgnc_complete_set.txt.gz` comes from https://www.genenames.org/cgi-bin/statistics#complete
 
