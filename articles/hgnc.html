@@ -423,18 +423,18 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol  
-   &lt;chr&gt;           &lt;chr&gt;   
- 1 ENSG00000215041 NEURL4  
- 2 ENSG00000188869 TMC3    
- 3 ENSG00000110200 ANAPC15 
- 4 ENSG00000233673 ANAPC1P1
- 5 ENSG00000234257 SOD2P1  
- 6 ENSG00000252246 RNA5SP92
- 7 ENSG00000089558 KCNH4   
- 8 ENSG00000131398 KCNC3   
- 9 ENSG00000256892 MTRNR2L7
-10 ENSG00000127328 RAB3IP  </code></pre>
+   ensembl         symbol    
+   &lt;chr&gt;           &lt;chr&gt;     
+ 1 ENSG00000229214 LINC00242 
+ 2 ENSG00000066557 LRRC40    
+ 3 ENSG00000226912 ISCA2P1   
+ 4 ENSG00000161618 ALDH16A1  
+ 5 ENSG00000130726 TRIM28    
+ 6 ENSG00000127663 KDM4B     
+ 7 ENSG00000127616 SMARCA4   
+ 8 ENSG00000177721 ANXA2R    
+ 9 ENSG00000237399 PITRM1-AS1
+10 ENSG00000186081 KRT5      </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
