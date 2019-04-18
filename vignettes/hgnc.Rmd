@@ -1,0 +1,236 @@
+---
+title: "Introduction to hgnc"
+author: "Zhuoer Dong"
+date: "`r Sys.Date()`"
+output: prettydoc::html_pretty
+vignette: >
+  %\VignetteIndexEntry{Introduction to hgnc}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = F,
+  comment = ''
+)
+
+library(magrittr)
+```
+
+```{r}
+library(hgnc)
+```
+
+# quick start
+
+```{r make-soft.table, include=FALSE}
+soft.table <- system.file('extdata/GSE19161_family.soft.gz', package = 'rGEO') %>% 
+    rGEO::parse_gse_soft(verbose = F) %>% {.$table} %T>% print
+```
+
+
+```{r make-probe2ensembl, include=FALSE}
+probe2ensembl <- soft.table %>% dplyr::select(1, 9) %>% dplyr::slice(41:50) %T>% print
+```
+
+For impatient people, you can convert a probe-ensembl map like the following [^probe2ensembl]
+
+```{r echo-probe2ensembl}
+probe2ensembl
+```
+
+[^probe2ensembl]: how to create the `probe2ensembl` variable 
+
+    You can copy the following code:
+
+    ```{r, echo=FALSE}
+    deparse::deparsec(probe2ensembl, as_tribble = T)
+    ```
+
+    Or create it from scratch:
+    
+    a. read probe annotation from a GSE SOFT file
+    
+       ```{r make-soft.table}
+       ```
+
+    b. subset part of the table for the purpose of demostration
+
+       ```{r make-probe2ensembl}
+       ```
+
+to a probe-symbol map ^[Ensembl IDs which don't have corresponding HUGO symbol are discarded.]
+
+```{r}
+probe2ensembl %>% melt_map('ID', 'Ensembl', ' /// ') %>%
+    dplyr::mutate('symbol' = as_symbol_from_ensembl(Ensembl)) %>%
+    cast_map('ID', 'symbol', ' /// ')
+```
+
+Other common ID like entrez gene ID, Unigene ID, RefSeq accession are also supported.
+
+
+# innovation
+
+## the problem
+
+To master this package, you need to understand the problem it aims to solve. That is, to turn something like
+
+```{r echo=FALSE}
+tibble::tribble(  
+	~probe, ~id,
+    'probe1', 'id1 | id2',
+    'probe2', 'id3'
+) %>% knitr::kable()
+```
+
+to 
+
+```{r echo=FALSE}
+tibble::tribble(  
+	~probe, ~symbol,
+    'probe1', 'symbol1 | symbol2',
+    'probe2', 'symbol3'
+) %>% knitr::kable()
+```
+
+## solve a simpler one
+
+To point out the key difficulty, let's contrast it with a simpler one --- to turn something like 
+
+```{r echo=FALSE}
+tibble::tribble(  
+	~probe, ~id,
+    'probe4', 'id4',
+    'probe5', 'id5',
+    'probe6', 'id6'
+) %>% knitr::kable()
+```
+
+to 
+
+```{r echo=FALSE}
+tibble::tribble(  
+	~probe, ~symbol,
+    'probe4', 'symbol4',
+    'probe5', 'symbol5',
+    'probe6', 'symbol6'
+) %>% knitr::kable()
+```
+
+That's quite easy, you just need a id-symbol map
+
+```{r echo=FALSE}
+tibble::tribble(  
+	~id, ~symbol,
+    'id4', 'symbol4',
+    'id5', 'symbol5',
+    'id6', 'symbol6'
+) %>% knitr::kable(caption = 'id2symbol')
+```
+
+and use the following code ^[I deliberately shuffle the rows of `id2symbol` to show that `id2symbol` just need to provide the correct relationship between `id` and `symbol`, i.e, it doesn't necessarily maintain the same order as `probe2id`.]
+
+```{r}
+probe2id <- tibble::tribble(  
+	~probe, ~id,
+    'probe4', 'id4',
+    'probe5', 'id5',
+    'probe6', 'id6'
+)
+
+id2symbol <- tibble::tribble(  
+	~id, ~symbol,
+    'id5', 'symbol5',
+    'id6', 'symbol6',
+    'id4', 'symbol4'
+) 
+
+probe2symbpl <- probe2id %>% 
+    dplyr::transmute(probe, symbol = id2symbol$symbol[match(id, id2symbol$id)]) %T>% print
+```
+
+In the above code, we map `probe` to `symbol` by three steps [^probe4-symbol4].
+
+[^probe4-symbol4]: In general:
+
+    a. `dplyr::transmute` preserves `probe2id$probe` - `probe2id$id` relationship by _position_
+    b. `match()` finds `probe2id$id` - `id2symbol$id` relationship by _value_
+    c. `[]` finds `id2symbol$id` - `id2symbol$symbol` relationship by _position_
+
+    Let's us experience this by an example of `'probe4'` to `'symbol4'`:
+
+    a. 1st element of `probe2id$probe` -> 1st element of `probe2id$id`:  
+       `'probe4'` is the 1st element of `probe2id$probe`, so we look for the 1st element of `probe2id$id`, `'id4'`.
+  
+    b. `'id4'` in `probe2id$id` -> `'id4'` in `id2symbol$id`:  
+       `'id4'` is the 1st element of `probe2id$id`, then we look for the 1st element of `match()` (which gives the position of `probe2id$id` in `id2symbol$id` --- ``c(`r match(probe2id$id, id2symbol$id)`)`` in this case). We get `3`, so we look for the 3rd element of `id2symbol$id`, the exact value of `'id4'`.
+  
+    c. 3rd element of `id2symbol$id` -> 3rd element of `id2symbol$symbol`:  
+       finally, `'id4'` is the 3rd element of ``id2symbol$id`, thus we look for the 3rd element of `id2symbol$symbol`, `'symbol4'`.
+
+
+## key difficulty 
+
+Back the original problem, you can find that its fairly easy to "replace" `'id4'` with `'symbol4'`, `'id5'` with `'symbol5'`, etc (thanks to `match()`). But how can you "replace" the `'id1'` and `'id2'` inside `'id1 | id2'`? 
+
+That is what I meet when I want to address a [biological question](https://github.com/dongzhuoer/rGEO), as you can see in the 9th line of `probe2ensembl`.
+
+```{r}
+probe2ensembl %>% dplyr::slice(9)
+```
+
+If you think it's a piece of cake, you may have some misunderstanding [^not-easy]. 
+
+[^not-easy]: 
+    - Computer is very foolish, it can't convert `'id1 | id2'` to `'symbol1 | symbol2'` as you can easily achieve even without thinking. In programming, the only way is to search `'id1'` in `'id1 | id2'` and replace with `'symbol'` if it find one, then search `'id2'`, `'id3'`, etc. This will cause a severe poor performance.
+
+    - As for replacing all `'id'` with `'symbol'`, I use `id2symbol` just to simplify the problem, the id-symbol map in the real world is usually something like:
+
+      ```{r}
+      hgnc::ensembl2symbol %>% dplyr::sample_n(10)
+      ```
+
+## solution
+
+Inspired by [**reshape2**](https://github.com/hadley/reshape), I choose to "melt" 
+
+```{r}
+probe2id_wide <- tibble::tribble(  
+	~probe, ~id,
+    'probe1', 'id1 | id2',
+    'probe2', 'id3'
+)
+```
+
+to 
+
+```{r}
+probe2id_long <- probe2id_wide %>% melt_map('probe', 'id', ' \\| ') %T>% print
+```
+
+I call the former "wide" map and the latter "long" map.
+
+Then use the code in [simpler problem](#solve-a-simpler-one) to map id to symbol
+
+```{r}
+id2symbol <- tibble::tribble(  
+	~id, ~symbol,
+    'id1', 'symbol1',
+    'id2', 'symbol2',
+    'id3', 'symbol3'
+) 
+
+probe2symbol_long <- probe2id_long %>% 
+    dplyr::transmute(probe, symbol = id2symbol$symbol[match(id, id2symbol$id)]) %T>% print
+```
+
+Finally "cast" to 
+
+```{r}
+probe2symbol_wide <- probe2symbol_long %>% cast_map('probe', 'symbol', ' /// ') %T>% print
+```
+
+In short, A-B wide map -> A-B long map -> A-C long map -> A-C wide map.
+

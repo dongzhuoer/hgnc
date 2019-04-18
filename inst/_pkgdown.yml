@@ -1,0 +1,18 @@
+url: https://dongzhuoer.github.io/hgnc
+
+template:
+    params:
+        bootswatch: cerulean
+        docsearch:
+            api_key: 84b6de5f280e6ff1f6e2c117b5c96ac7
+            index_name: hgnc
+
+reference:
+    - title: "reshape map"
+      desc: >
+          convert map between "long" and "wide" format
+      contents: ends_with("_map")
+    - title: "as symbol"
+      desc: >
+          convert ID (accession) of other database to HUGO gene symbol
+      contents: starts_with("as_symbol_from")
