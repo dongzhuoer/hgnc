@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>hgnc 0.2.0-beta • hgnc</title>
+<title>Function reference • hgnc</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -25,17 +25,18 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 <!-- docsearch -->
-<script src="docsearch.js"></script>
+<script src="../docsearch.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/docsearch.js/2.6.1/docsearch.min.css" integrity="sha256-QOSRU/ra9ActyXkIBbiIB144aDBdtvXBcNc3OTNuX/Q=" crossorigin="anonymous" />
+<link href="../docsearch.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
 
 
-<meta property="og:title" content="hgnc 0.2.0-beta" />
+<meta property="og:title" content="Function reference" />
 
 
 
@@ -52,7 +53,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-index">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -64,24 +65,24 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">hgnc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <a class="navbar-link" href="../index.html">hgnc</a>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="articles/hgnc.html">Get started</a>
+  <a href="../articles/hgnc.html">Get started</a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -91,9 +92,12 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/content.html">package content</a>
+      <a href="../articles/content.html">package content</a>
     </li>
   </ul>
+</li>
+<li>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -122,37 +126,69 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>hgnc 0.2.0-beta</h1>
+      <h1>Reference</h1>
     </div>
 
+    <table class="ref-index">
 
-<div id="hgnc-020-beta" class="section level1">
+    <colgroup>
+      
+      <col class="alias" />
+      <col class="title" />
+    </colgroup>
 
-<div id="new-features" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features" class="anchor"></a>New features</h2>
-<ol>
-<li>add package documentation (including vignettes)</li>
-</ol>
-</div>
-</div>
-<div id="hgnc-010" class="section level1">
-<h1 class="hasAnchor">
-<a href="#hgnc-010" class="anchor"></a>hgnc 0.1.0</h1>
-<div id="new-features-1" class="section level2">
-<h2 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>New features</h2>
-<ol>
-<li>stand alone from lem4</li>
-</ol>
-</div>
-</div>
-
-
+    <tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-reshape-map" class="hasAnchor"><a href="#section-reshape-map" class="anchor"></a>reshape map</h2>
+          <p class="section-desc"><p>convert map between “long” and “wide” format</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="cast_map.html">cast_map()</a></code> </p>
+        </td>
+        <td><p>convert a "long" map into a "wide" one</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="melt_map.html">melt_map()</a></code> </p>
+        </td>
+        <td><p>convert a "wide" map into a "long" one</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="qualify_map.html">qualify_map()</a></code> </p>
+        </td>
+        <td><p>qualify a map to be "square"</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-as-symbol" class="hasAnchor"><a href="#section-as-symbol" class="anchor"></a>as symbol</h2>
+          <p class="section-desc"><p>convert ID (accession) of other database to HUGO gene symbol</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="as_symbol.html">as_symbol_from_symbol()</a></code> <code><a href="as_symbol.html">as_symbol_from_entrez()</a></code> <code><a href="as_symbol.html">as_symbol_from_ensembl()</a></code> <code><a href="as_symbol.html">as_symbol_from_genbank()</a></code> <code><a href="as_symbol.html">as_symbol_from_entrez_or_symbol()</a></code> <code><a href="as_symbol.html">as_symbol_from_unigene()</a></code> </p>
+        </td>
+        <td><p>convert common gene ID (accession) to HUGO gene symbol</p></td>
+      </tr>
+    </tbody>
+    </table>
   </div>
 
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#section-reshape-map">reshape map</a></li>
+      <li><a href="#section-as-symbol">as symbol</a></li>
+    </ul>
+  </div>
 </div>
-
 
       <footer>
       <div class="copyright">
@@ -160,7 +196,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.2.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
 </div>
       </footer>
    </div>
