@@ -19,8 +19,8 @@ Imports:
     dplyr,
     rlang,
     plyr
-Suggests: 
-    testthat
+Suggests:
+    prettydoc
 Remotes:
     dongzhuoer/libzhuoer
 VignetteBuilder: knitr, rmarkdown
