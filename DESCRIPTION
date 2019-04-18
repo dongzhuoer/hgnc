@@ -20,7 +20,9 @@ Imports:
     rlang,
     plyr
 Suggests:
-    prettydoc
+    prettydoc,
+    rGEO
 Remotes:
-    dongzhuoer/libzhuoer
+    dongzhuoer/libzhuoer,
+    dongzhuoer/rGEO
 VignetteBuilder: knitr, rmarkdown
