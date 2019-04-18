@@ -28,27 +28,18 @@ rm(list = ls(envir = globalenv(), all = T))
 
 
 ```{r}
-hgnc_all <- libzhuoer::read_char_tsv('data-raw/hgnc_complete_set.txt.gz') 
+hgnc_all <- readr::read_tsv('data-raw/hgnc_complete_set.txt.gz', T, libzhuoer::cols_char()) 
 hgnc <- hgnc_all %>% dplyr::filter(status == 'Approved')
 
 hugo_symbol <- hgnc$symbol;
-#hugo_symbol_all <- hgnc$prev_symbol %>% stringr::str_split('\\|') %>% unlist %>% na.omit %>% as.character %>% #c(hgnc$symbol) %>% unique
-#devtools::use_data(hugo_symbol_all, overwrite = T)
 
 
-#hgnc$prev_symbol %>% stringr::str_subset('H4/n')
-
-#c(hgnc$alias_symbol, hgnc$prev_symbol) %>% stringr::str_split('\\|') %>% unlist %>% na.omit %>% as.character %>% stringr::str_subset('[^-@\\w]+')
-#hgnc$ena
-#hgnc$refseq_accession %>% stringr::str_extract('\\w+_') %>% na.omit() %>% unique
-
-#'NM_004322' %in% hgnc$refseq_accession
 
 entrez2symbol <- dplyr::select(hgnc, entrez = entrez_id, symbol) %>% hgnc::qualify_map() %T>% print
 
 ensembl2symbol <- dplyr::select(hgnc, ensembl = ensembl_gene_id, symbol) %>% hgnc::qualify_map() %T>% print
  
-hgnc$ensembl_gene_id %>% stringr::str_extract('[^\\d]+')%>% na.omit() %>% unique
+hgnc$ensembl_gene_id %>% stringr::str_extract('[^\\d]+') %>% na.omit() %>% unique
 
 entrez_or_symbol2symbol <- dplyr::bind_rows(
 	tibble::tibble(entrez_or_symbol = hugo_symbol, symbol = hugo_symbol), 
@@ -66,12 +57,13 @@ genbank2symbol <- dplyr::bind_rows(
 	{message('check whether different transcripts of the same gene have different symbols')} %>%
 	dplyr::mutate_at(1, . %>% stringr::str_remove('\\.\\d+$')) %>% hgnc::qualify_map() %T>% print
 
-unigene2entrez <- libzhuoer::read_char_tsv('data-raw/gene2unigene.tsv.gz') %>% 
+unigene2entrez <- 'data-raw/gene2unigene.tsv.gz' %>% 
+    readr::read_tsv(T, libzhuoer::cols_char()) %>% 
 	dplyr::filter_at(2, dplyr::any_vars(stringr::str_detect(., '^Hs\\.'))) %>% 
 	dplyr::select(2, 1) %>% hgnc::qualify_map() %>%
 	dplyr::select(unigene = 1, entrez = 2) %T>% print
 
-devtools::use_data(hugo_symbol, entrez2symbol, ensembl2symbol, genbank2symbol, entrez_or_symbol2symbol, unigene2entrez, overwrite = T);
+usethis::use_data(hugo_symbol, entrez2symbol, ensembl2symbol, genbank2symbol, entrez_or_symbol2symbol, unigene2entrez, overwrite = T);
 ```
 
 
