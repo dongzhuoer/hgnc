@@ -4,9 +4,6 @@ url: https://dongzhuoer.github.io/hgnc
 template:
     params:
         bootswatch: cerulean
-        docsearch:
-            api_key: 84b6de5f280e6ff1f6e2c117b5c96ac7
-            index_name: hgnc
 
 reference:
     - title: "reshape map"

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Zhuoer Dong" />
 
-<meta name="date" content="2018-12-12" />
+<meta name="date" content="2019-04-27" />
 
 <title>Introduction to hgnc</title>
 
@@ -98,7 +98,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <section class="page-header">
 <h1 class="title toc-ignore project-name">Introduction to hgnc</h1>
 <h4 class="author project-author">Zhuoer Dong</h4>
-<h4 class="date project-date">2018-12-12</h4>
+<h4 class="date project-date">2019-04-27</h4>
 </section>
 
 
@@ -371,7 +371,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
  8 2000… Homo sapiens     Exemplar seque… GenBank          g4504444        
  9 2000… Homo sapiens     Exemplar seque… GenBank          g4506712        
 10 2000… Homo sapiens     Exemplar seque… GenBank          g4506684        
-# ... with 648 more rows, and 6 more variables: `UniGene ID` &lt;chr&gt;, `Gene
+# … with 648 more rows, and 6 more variables: `UniGene ID` &lt;chr&gt;, `Gene
 #   Title` &lt;chr&gt;, `Gene Symbol` &lt;chr&gt;, Ensembl &lt;chr&gt;, ORF &lt;chr&gt;,
 #   SPOT_ID &lt;chr&gt;</code></pre></li>
 <li><p>subset part of the table for the purpose of demostration</p>
@@ -414,18 +414,18 @@ finally, <code>&#39;id4&#39;</code> is the 3rd element of `<code>id2symbol$id</c
 <li><p>As for replacing all <code>&#39;id&#39;</code> with <code>&#39;symbol&#39;</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">sample_n</span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol   
-   &lt;chr&gt;           &lt;chr&gt;    
- 1 ENSG00000171481 OR1L3    
- 2 ENSG00000239829 KRT8P25  
- 3 ENSG00000140474 ULK3     
- 4 ENSG00000243075 RN7SL519P
- 5 ENSG00000233543 CHTF8P1  
- 6 ENSG00000139985 ADAM21   
- 7 ENSG00000230819 ZNF736P5Y
- 8 ENSG00000207631 MIR641   
- 9 ENSG00000202471 RNU4-20P 
-10 ENSG00000215043 GLULP6   </code></pre></li>
+   ensembl         symbol     
+   &lt;chr&gt;           &lt;chr&gt;      
+ 1 ENSG00000199248 RNU6-28P   
+ 2 ENSG00000175398 OR10P1     
+ 3 ENSG00000207577 MIR587     
+ 4 ENSG00000175048 ZDHHC14    
+ 5 ENSG00000253941 IGHVII-51-2
+ 6 ENSG00000068024 HDAC4      
+ 7 ENSG00000222154 RN7SKP218  
+ 8 ENSG00000227644 HIGD1AP11  
+ 9 ENSG00000219507 FTH1P8     
+10 ENSG00000049323 LTBP1      </code></pre></li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a></li>
 </ol>
