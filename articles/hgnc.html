@@ -30,7 +30,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hgnc</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -100,7 +100,7 @@
 <h1 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>quick start</h1>
 <p>For impatient people, you can convert a probe-ensembl map like the following <a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">probe2ensembl</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">probe2ensembl</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
    ID          Ensembl                                                
    &lt;chr&gt;       &lt;chr&gt;                                                  
@@ -115,9 +115,9 @@
  9 200082_s_at ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326
 10 200084_at   ENSG00000110696                                        </code></pre>
 <p>to a probe-symbol map <a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a></p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/melt_map.html">melt_map</a></span>(<span class="st">'ID'</span>, <span class="st">'Ensembl'</span>, <span class="st">' /// '</span>) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-2" title="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="st">'symbol'</span> =<span class="st"> </span><span class="kw"><a href="../reference/as_symbol.html">as_symbol_from_ensembl</a></span>(Ensembl)) <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb9-3" title="3"><span class="st">    </span><span class="kw"><a href="../reference/cast_map.html">cast_map</a></span>(<span class="st">'ID'</span>, <span class="st">'symbol'</span>, <span class="st">' /// '</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/melt_map.html">melt_map</a></span>(<span class="st">'ID'</span>, <span class="st">'Ensembl'</span>, <span class="st">' /// '</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-2" title="2"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="st">'symbol'</span> =<span class="st"> </span><span class="kw"><a href="../reference/as_symbol.html">as_symbol_from_ensembl</a></span>(Ensembl)) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb6-3" title="3"><span class="st">    </span><span class="kw"><a href="../reference/cast_map.html">cast_map</a></span>(<span class="st">'ID'</span>, <span class="st">'symbol'</span>, <span class="st">' /// '</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
    ID          symbol          
    &lt;chr&gt;       &lt;chr&gt;           
@@ -242,22 +242,22 @@
 </tbody>
 </table>
 <p>and use the following code <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">probe2id &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
-<a class="sourceLine" id="cb11-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
-<a class="sourceLine" id="cb11-3" title="3">    <span class="st">'probe4'</span>, <span class="st">'id4'</span>,</a>
-<a class="sourceLine" id="cb11-4" title="4">    <span class="st">'probe5'</span>, <span class="st">'id5'</span>,</a>
-<a class="sourceLine" id="cb11-5" title="5">    <span class="st">'probe6'</span>, <span class="st">'id6'</span></a>
-<a class="sourceLine" id="cb11-6" title="6">)</a>
-<a class="sourceLine" id="cb11-7" title="7"></a>
-<a class="sourceLine" id="cb11-8" title="8">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
-<a class="sourceLine" id="cb11-9" title="9">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
-<a class="sourceLine" id="cb11-10" title="10">    <span class="st">'id5'</span>, <span class="st">'symbol5'</span>,</a>
-<a class="sourceLine" id="cb11-11" title="11">    <span class="st">'id6'</span>, <span class="st">'symbol6'</span>,</a>
-<a class="sourceLine" id="cb11-12" title="12">    <span class="st">'id4'</span>, <span class="st">'symbol4'</span></a>
-<a class="sourceLine" id="cb11-13" title="13">) </a>
-<a class="sourceLine" id="cb11-14" title="14"></a>
-<a class="sourceLine" id="cb11-15" title="15">probe2symbpl &lt;-<span class="st"> </span>probe2id <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb11-16" title="16"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">probe2id &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
+<a class="sourceLine" id="cb8-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
+<a class="sourceLine" id="cb8-3" title="3">    <span class="st">'probe4'</span>, <span class="st">'id4'</span>,</a>
+<a class="sourceLine" id="cb8-4" title="4">    <span class="st">'probe5'</span>, <span class="st">'id5'</span>,</a>
+<a class="sourceLine" id="cb8-5" title="5">    <span class="st">'probe6'</span>, <span class="st">'id6'</span></a>
+<a class="sourceLine" id="cb8-6" title="6">)</a>
+<a class="sourceLine" id="cb8-7" title="7"></a>
+<a class="sourceLine" id="cb8-8" title="8">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
+<a class="sourceLine" id="cb8-9" title="9">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
+<a class="sourceLine" id="cb8-10" title="10">    <span class="st">'id5'</span>, <span class="st">'symbol5'</span>,</a>
+<a class="sourceLine" id="cb8-11" title="11">    <span class="st">'id6'</span>, <span class="st">'symbol6'</span>,</a>
+<a class="sourceLine" id="cb8-12" title="12">    <span class="st">'id4'</span>, <span class="st">'symbol4'</span></a>
+<a class="sourceLine" id="cb8-13" title="13">) </a>
+<a class="sourceLine" id="cb8-14" title="14"></a>
+<a class="sourceLine" id="cb8-15" title="15">probe2symbpl &lt;-<span class="st"> </span>probe2id <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb8-16" title="16"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -271,7 +271,7 @@
 <a href="#key-difficulty" class="anchor"></a>key difficulty</h2>
 <p>Back the original problem, you can find that its fairly easy to “replace” <code>'id4'</code> with <code>'symbol4'</code>, <code>'id5'</code> with <code>'symbol5'</code>, etc (thanks to <code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code>). But how can you “replace” the <code>'id1'</code> and <code>'id2'</code> inside <code>'id1 | id2'</code>?</p>
 <p>That is what I meet when I want to address a <a href="https://github.com/dongzhuoer/rGEO">biological question</a>, as you can see in the 9th line of <code>probe2ensembl</code>.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">9</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">9</span>)</a></code></pre></div>
 <pre><code># A tibble: 1 x 2
   ID          Ensembl                                                
   &lt;chr&gt;       &lt;chr&gt;                                                  
@@ -282,13 +282,13 @@
 <h2 class="hasAnchor">
 <a href="#solution" class="anchor"></a>solution</h2>
 <p>Inspired by <a href="https://github.com/hadley/reshape"><strong>reshape2</strong></a>, I choose to “melt”</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">probe2id_wide &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
-<a class="sourceLine" id="cb17-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
-<a class="sourceLine" id="cb17-3" title="3">    <span class="st">'probe1'</span>, <span class="st">'id1 | id2'</span>,</a>
-<a class="sourceLine" id="cb17-4" title="4">    <span class="st">'probe2'</span>, <span class="st">'id3'</span></a>
-<a class="sourceLine" id="cb17-5" title="5">)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1">probe2id_wide &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
+<a class="sourceLine" id="cb14-2" title="2">    <span class="op">~</span>probe, <span class="op">~</span>id,</a>
+<a class="sourceLine" id="cb14-3" title="3">    <span class="st">'probe1'</span>, <span class="st">'id1 | id2'</span>,</a>
+<a class="sourceLine" id="cb14-4" title="4">    <span class="st">'probe2'</span>, <span class="st">'id3'</span></a>
+<a class="sourceLine" id="cb14-5" title="5">)</a></code></pre></div>
 <p>to</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">probe2id_long &lt;-<span class="st"> </span>probe2id_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/melt_map.html">melt_map</a></span>(<span class="st">'probe'</span>, <span class="st">'id'</span>, <span class="st">' </span><span class="ch">\\</span><span class="st">| '</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">probe2id_long &lt;-<span class="st"> </span>probe2id_wide <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/melt_map.html">melt_map</a></span>(<span class="st">'probe'</span>, <span class="st">'id'</span>, <span class="st">' </span><span class="ch">\\</span><span class="st">| '</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  id   
   &lt;chr&gt;  &lt;chr&gt;
@@ -297,15 +297,15 @@
 3 probe2 id3  </code></pre>
 <p>I call the former “wide” map and the latter “long” map.</p>
 <p>Then use the code in <a href="#solve-a-simpler-one">simpler problem</a> to map id to symbol</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
-<a class="sourceLine" id="cb20-2" title="2">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
-<a class="sourceLine" id="cb20-3" title="3">    <span class="st">'id1'</span>, <span class="st">'symbol1'</span>,</a>
-<a class="sourceLine" id="cb20-4" title="4">    <span class="st">'id2'</span>, <span class="st">'symbol2'</span>,</a>
-<a class="sourceLine" id="cb20-5" title="5">    <span class="st">'id3'</span>, <span class="st">'symbol3'</span></a>
-<a class="sourceLine" id="cb20-6" title="6">) </a>
-<a class="sourceLine" id="cb20-7" title="7"></a>
-<a class="sourceLine" id="cb20-8" title="8">probe2symbol_long &lt;-<span class="st"> </span>probe2id_long <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb20-9" title="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1">id2symbol &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(  </a>
+<a class="sourceLine" id="cb17-2" title="2">    <span class="op">~</span>id, <span class="op">~</span>symbol,</a>
+<a class="sourceLine" id="cb17-3" title="3">    <span class="st">'id1'</span>, <span class="st">'symbol1'</span>,</a>
+<a class="sourceLine" id="cb17-4" title="4">    <span class="st">'id2'</span>, <span class="st">'symbol2'</span>,</a>
+<a class="sourceLine" id="cb17-5" title="5">    <span class="st">'id3'</span>, <span class="st">'symbol3'</span></a>
+<a class="sourceLine" id="cb17-6" title="6">) </a>
+<a class="sourceLine" id="cb17-7" title="7"></a>
+<a class="sourceLine" id="cb17-8" title="8">probe2symbol_long &lt;-<span class="st"> </span>probe2id_long <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb17-9" title="9"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -313,7 +313,7 @@
 2 probe1 symbol2
 3 probe2 symbol3</code></pre>
 <p>Finally “cast” to</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">probe2symbol_wide &lt;-<span class="st"> </span>probe2symbol_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/cast_map.html">cast_map</a></span>(<span class="st">'probe'</span>, <span class="st">'symbol'</span>, <span class="st">' /// '</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1">probe2symbol_wide &lt;-<span class="st"> </span>probe2symbol_long <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="../reference/cast_map.html">cast_map</a></span>(<span class="st">'probe'</span>, <span class="st">'symbol'</span>, <span class="st">' /// '</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
 <pre><code># A tibble: 2 x 2
   probe  symbol             
   &lt;chr&gt;  &lt;chr&gt;              
@@ -328,60 +328,25 @@
 <li id="fn1">
 <p>how to create the <code>probe2ensembl</code> variable</p>
 <p>You can copy the following code:</p>
-<pre><code>tribble(
-  ~ID,           ~Ensembl,                                                 
-  "200064_at",   "ENSG00000096384",                                        
-  "200066_at",   "ENSG00000113141",                                        
-  "200068_s_at", "ENSG00000127022",                                        
-  "200069_at",   "ENSG00000075856",                                        
-  "200071_at",   "ENSG00000119953",                                        
-  "200076_s_at", "ENSG00000105700",                                        
-  "200077_s_at", "ENSG00000104904",                                        
-  "200078_s_at", "ENSG00000117410",                                        
-  "200082_s_at", "ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326",
-  "200084_at",   "ENSG00000110696"
-)</code></pre>
-<p>Or create it from scratch:</p>
-<ol style="list-style-type: lower-alpha">
-<li>
-<p>read probe annotation from a GSE SOFT file</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">soft.table &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata/GSE19161_family.soft.gz'</span>, <span class="dt">package =</span> <span class="st">'rGEO'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="st">    </span>rGEO<span class="op">::</span><span class="kw"><a href="https://dongzhuoer.github.io/rGEO/reference/parse_gse_soft.html">parse_gse_soft</a></span>(<span class="dt">verbose =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>{.<span class="op">$</span>table} <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
-<pre><code># A tibble: 658 x 11
-   ID    `Species Scient… `Sequence Type` `Sequence Sourc… `Transcript ID(…
-   &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;           &lt;chr&gt;            &lt;chr&gt;           
- 1 121_… Homo sapiens     Exemplar seque… GenBank          X69699          
- 2 2000… Homo sapiens     Exemplar seque… GenBank          g4506626        
- 3 2000… Homo sapiens     Exemplar seque… GenBank          g4503538        
- 4 2000… Homo sapiens     Exemplar seque… GenBank          g6005748        
- 5 2000… Homo sapiens     Exemplar seque… GenBank          g6598322        
- 6 2000… Homo sapiens     Exemplar seque… GenBank          g4506594        
- 7 2000… Homo sapiens     Exemplar seque… GenBank          g4506610        
- 8 2000… Homo sapiens     Exemplar seque… GenBank          g4504444        
- 9 2000… Homo sapiens     Exemplar seque… GenBank          g4506712        
-10 2000… Homo sapiens     Exemplar seque… GenBank          g4506684        
-# … with 648 more rows, and 6 more variables: `UniGene ID` &lt;chr&gt;, `Gene
-#   Title` &lt;chr&gt;, `Gene Symbol` &lt;chr&gt;, Ensembl &lt;chr&gt;, ORF &lt;chr&gt;,
-#   SPOT_ID &lt;chr&gt;</code></pre>
-</li>
-<li>
-<p>subset part of the table for the purpose of demostration</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">probe2ensembl &lt;-<span class="st"> </span>soft.table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>) <span class="op">%T&gt;%</span><span class="st"> </span>print</a></code></pre></div>
-<pre><code># A tibble: 10 x 2
-   ID          Ensembl                                                
-   &lt;chr&gt;       &lt;chr&gt;                                                  
- 1 200064_at   ENSG00000096384                                        
- 2 200066_at   ENSG00000113141                                        
- 3 200068_s_at ENSG00000127022                                        
- 4 200069_at   ENSG00000075856                                        
- 5 200071_at   ENSG00000119953                                        
- 6 200076_s_at ENSG00000105700                                        
- 7 200077_s_at ENSG00000104904                                        
- 8 200078_s_at ENSG00000117410                                        
- 9 200082_s_at ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326
-10 200084_at   ENSG00000110696                                        </code></pre>
-</li>
-</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">probe2ensembl &lt;-<span class="st"> </span>tibble<span class="op">::</span><span class="kw"><a href="https://tibble.tidyverse.org/reference/tribble.html">tribble</a></span>(</a>
+<a class="sourceLine" id="cb2-2" title="2">  <span class="op">~</span>ID,           <span class="op">~</span>Ensembl,                                                 </a>
+<a class="sourceLine" id="cb2-3" title="3">  <span class="st">"200064_at"</span>,   <span class="st">"ENSG00000096384"</span>,                                        </a>
+<a class="sourceLine" id="cb2-4" title="4">  <span class="st">"200066_at"</span>,   <span class="st">"ENSG00000113141"</span>,                                        </a>
+<a class="sourceLine" id="cb2-5" title="5">  <span class="st">"200068_s_at"</span>, <span class="st">"ENSG00000127022"</span>,                                        </a>
+<a class="sourceLine" id="cb2-6" title="6">  <span class="st">"200069_at"</span>,   <span class="st">"ENSG00000075856"</span>,                                        </a>
+<a class="sourceLine" id="cb2-7" title="7">  <span class="st">"200071_at"</span>,   <span class="st">"ENSG00000119953"</span>,                                        </a>
+<a class="sourceLine" id="cb2-8" title="8">  <span class="st">"200076_s_at"</span>, <span class="st">"ENSG00000105700"</span>,                                        </a>
+<a class="sourceLine" id="cb2-9" title="9">  <span class="st">"200077_s_at"</span>, <span class="st">"ENSG00000104904"</span>,                                        </a>
+<a class="sourceLine" id="cb2-10" title="10">  <span class="st">"200078_s_at"</span>, <span class="st">"ENSG00000117410"</span>,                                        </a>
+<a class="sourceLine" id="cb2-11" title="11">  <span class="st">"200082_s_at"</span>, <span class="st">"ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326"</span>,</a>
+<a class="sourceLine" id="cb2-12" title="12">  <span class="st">"200084_at"</span>,   <span class="st">"ENSG00000110696"</span></a>
+<a class="sourceLine" id="cb2-13" title="13">)</a></code></pre></div>
+<p>Or create it from scratch (some packages are needed):</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># read probe annotation from a GSE SOFT file</span></a>
+<a class="sourceLine" id="cb3-2" title="2">soft_table &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata/GSE19161_family.soft.gz'</span>, <span class="dt">package =</span> <span class="st">'rGEO'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">    </span>rGEO<span class="op">::</span><span class="kw"><a href="https://dongzhuoer.github.io/rGEO/reference/parse_gse_soft.html">parse_gse_soft</a></span>(<span class="dt">verbose =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>{.<span class="op">$</span>table}</a>
+<a class="sourceLine" id="cb3-4" title="4"><span class="co"># subset part of the table for the purpose of demostration</span></a>
+<a class="sourceLine" id="cb3-5" title="5">probe2ensembl &lt;-<span class="st"> </span>soft_table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>)</a></code></pre></div>
 <a href="#fnref1" class="footnote-back">↩</a>
 </li>
 <li id="fn2"><p>Ensembl IDs which don’t have corresponding HUGO symbol are discarded.<a href="#fnref2" class="footnote-back">↩</a></p></li>
@@ -413,20 +378,20 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <li><p>Computer is very foolish, it can’t convert <code>'id1 | id2'</code> to <code>'symbol1 | symbol2'</code> as you can easily achieve even without thinking. In programming, the only way is to search <code>'id1'</code> in <code>'id1 | id2'</code> and replace with <code>'symbol'</code> if it find one, then search <code>'id2'</code>, <code>'id3'</code>, etc. This will cause a severe poor performance.</p></li>
 <li>
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol   
-   &lt;chr&gt;           &lt;chr&gt;    
- 1 ENSG00000108839 ALOX12   
- 2 ENSG00000241631 RN7SL316P
- 3 ENSG00000124496 TRERF1   
- 4 ENSG00000229724 OR2AQ1P  
- 5 ENSG00000224816 NAP1L4P2 
- 6 ENSG00000230818 MTND2P16 
- 7 ENSG00000237992 LINC01808
- 8 ENSG00000083799 CYLD     
- 9 ENSG00000265486 RN7SL518P
-10 ENSG00000206113 CFAP99   </code></pre>
+   ensembl         symbol 
+   &lt;chr&gt;           &lt;chr&gt;  
+ 1 ENSG00000128815 WDFY4  
+ 2 ENSG00000211829 TRDC   
+ 3 ENSG00000181826 RELL1  
+ 4 ENSG00000163795 ZNF513 
+ 5 ENSG00000150764 DIXDC1 
+ 6 ENSG00000255259 ZNF123P
+ 7 ENSG00000035141 FAM136A
+ 8 ENSG00000109381 ELF2   
+ 9 ENSG00000163634 THOC7  
+10 ENSG00000225756 DBH-AS1</code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
