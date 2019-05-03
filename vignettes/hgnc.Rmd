@@ -24,14 +24,22 @@ library(hgnc)
 
 # quick start
 
-```{r make-soft.table, include=FALSE}
-soft.table <- system.file('extdata/GSE19161_family.soft.gz', package = 'rGEO') %>% 
-    rGEO::parse_gse_soft(verbose = F) %>% {.$table} %T>% print
-```
 
 
 ```{r make-probe2ensembl, include=FALSE}
-probe2ensembl <- soft.table %>% dplyr::select(1, 9) %>% dplyr::slice(41:50) %T>% print
+probe2ensembl <- tibble::tribble(
+  ~ID,           ~Ensembl,                                                 
+  "200064_at",   "ENSG00000096384",                                        
+  "200066_at",   "ENSG00000113141",                                        
+  "200068_s_at", "ENSG00000127022",                                        
+  "200069_at",   "ENSG00000075856",                                        
+  "200071_at",   "ENSG00000119953",                                        
+  "200076_s_at", "ENSG00000105700",                                        
+  "200077_s_at", "ENSG00000104904",                                        
+  "200078_s_at", "ENSG00000117410",                                        
+  "200082_s_at", "ENSG00000171863 /// ENSG00000183405 /// ENSG00000213326",
+  "200084_at",   "ENSG00000110696"
+)
 ```
 
 For impatient people, you can convert a probe-ensembl map like the following [^probe2ensembl]
@@ -44,21 +52,18 @@ probe2ensembl
 
     You can copy the following code:
 
-    ```{r, echo=FALSE}
-    deparse::deparsec(probe2ensembl, as_tribble = T)
+    ```{r make-probe2ensembl, eval=FALSE}
     ```
 
-    Or create it from scratch:
+    Or create it from scratch (some packages are needed):
     
-    a. read probe annotation from a GSE SOFT file
-    
-       ```{r make-soft.table}
-       ```
-
-    b. subset part of the table for the purpose of demostration
-
-       ```{r make-probe2ensembl}
-       ```
+    ```r
+    # read probe annotation from a GSE SOFT file
+    soft_table <- system.file('extdata/GSE19161_family.soft.gz', package = 'rGEO') %>% 
+        rGEO::parse_gse_soft(verbose = F) %>% {.$table}
+    # subset part of the table for the purpose of demostration
+    probe2ensembl <- soft_table %>% dplyr::select(1, 9) %>% dplyr::slice(41:50)
+    ```
 
 to a probe-symbol map ^[Ensembl IDs which don't have corresponding HUGO symbol are discarded.]
 
