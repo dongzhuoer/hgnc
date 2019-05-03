@@ -86,7 +86,7 @@
       <h1>Introduction to hgnc</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2019-05-02</h4>
+            <h4 class="date">2019-05-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/hgnc.Rmd"><code>vignettes/hgnc.Rmd</code></a></small>
       <div class="hidden name"><code>hgnc.Rmd</code></div>
@@ -415,18 +415,18 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol    
-   &lt;chr&gt;           &lt;chr&gt;     
- 1 ENSG00000167664 TMIGD2    
- 2 ENSG00000154165 GPR15     
- 3 ENSG00000168538 TRAPPC11  
- 4 ENSG00000133030 MPRIP     
- 5 ENSG00000149929 HIRIP3    
- 6 ENSG00000211978 IGHV5-78  
- 7 ENSG00000174165 ZDHHC24   
- 8 ENSG00000219149 PPIAP87   
- 9 ENSG00000200107 RNU6-1249P
-10 ENSG00000100401 RANGAP1   </code></pre>
+   ensembl         symbol   
+   &lt;chr&gt;           &lt;chr&gt;    
+ 1 ENSG00000108839 ALOX12   
+ 2 ENSG00000241631 RN7SL316P
+ 3 ENSG00000124496 TRERF1   
+ 4 ENSG00000229724 OR2AQ1P  
+ 5 ENSG00000224816 NAP1L4P2 
+ 6 ENSG00000230818 MTND2P16 
+ 7 ENSG00000237992 LINC01808
+ 8 ENSG00000083799 CYLD     
+ 9 ENSG00000265486 RN7SL518P
+10 ENSG00000206113 CFAP99   </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
