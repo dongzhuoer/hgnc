@@ -344,7 +344,7 @@
 <p>Or create it from scratch (some packages are needed):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="co"># read probe annotation from a GSE SOFT file</span></a>
 <a class="sourceLine" id="cb3-2" title="2">soft_table &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata/GSE19161_family.soft.gz'</span>, <span class="dt">package =</span> <span class="st">'rGEO'</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="st">    </span>rGEO<span class="op">::</span><span class="kw"><a href="https://dongzhuoer.github.io/rGEO/reference/parse_gse_soft.html">parse_gse_soft</a></span>(<span class="dt">verbose =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>{.<span class="op">$</span>table}</a>
+<a class="sourceLine" id="cb3-3" title="3"><span class="st">    </span>rGEO<span class="op">::</span><span class="kw">parse_gse_soft</span>(<span class="dt">verbose =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>{.<span class="op">$</span>table}</a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co"># subset part of the table for the purpose of demostration</span></a>
 <a class="sourceLine" id="cb3-5" title="5">probe2ensembl &lt;-<span class="st"> </span>soft_table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>)</a></code></pre></div>
 <a href="#fnref1" class="footnote-back">↩</a>
@@ -382,16 +382,16 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <pre><code># A tibble: 10 x 2
    ensembl         symbol    
    &lt;chr&gt;           &lt;chr&gt;     
- 1 ENSG00000224674 EIF3EP2   
- 2 ENSG00000207071 RNU6-1207P
- 3 ENSG00000118514 ALDH8A1   
- 4 ENSG00000237548 TTLL11-IT1
- 5 ENSG00000110344 UBE4A     
- 6 ENSG00000127252 HRASLS    
- 7 ENSG00000229111 MED4-AS1  
- 8 ENSG00000214374 RPLP2P1   
- 9 ENSG00000114948 ADAM23    
-10 ENSG00000236530 KPNA2P1   </code></pre>
+ 1 ENSG00000275692 MIR6724-4 
+ 2 ENSG00000234201 BMI1P1    
+ 3 ENSG00000213075 RPL31P11  
+ 4 ENSG00000238719 RNU7-96P  
+ 5 ENSG00000264136 MIR3689D2 
+ 6 ENSG00000230375 GSTA11P   
+ 7 ENSG00000103540 CCP110    
+ 8 ENSG00000240828 RPL21P4   
+ 9 ENSG00000236756 DNAJC9-AS1
+10 ENSG00000145604 SKP2      </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
