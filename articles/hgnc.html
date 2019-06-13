@@ -86,7 +86,7 @@
       <h1>Introduction to hgnc</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2019-06-06</h4>
+            <h4 class="date">2019-06-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/hgnc.Rmd"><code>vignettes/hgnc.Rmd</code></a></small>
       <div class="hidden name"><code>hgnc.Rmd</code></div>
@@ -380,18 +380,18 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</a></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol         
-   &lt;chr&gt;           &lt;chr&gt;          
- 1 ENSG00000233117 LINC00702      
- 2 ENSG00000123268 ATF1           
- 3 ENSG00000282301 CYP3A7-CYP3A51P
- 4 ENSG00000203879 GDI1           
- 5 ENSG00000188603 CLN3           
- 6 ENSG00000158195 WASF2          
- 7 ENSG00000188997 KCTD21         
- 8 ENSG00000235992 GRAMD4P2       
- 9 ENSG00000100347 SAMM50         
-10 ENSG00000090534 THPO           </code></pre>
+   ensembl         symbol     
+   &lt;chr&gt;           &lt;chr&gt;      
+ 1 ENSG00000125148 MT2A       
+ 2 ENSG00000213194 CDK7P1     
+ 3 ENSG00000231165 TRBV26OR9-2
+ 4 ENSG00000226670 BCAS2P3    
+ 5 ENSG00000170234 PWWP2A     
+ 6 ENSG00000252184 RNU2-10P   
+ 7 ENSG00000276597 TRBV11-3   
+ 8 ENSG00000104388 RAB2A      
+ 9 ENSG00000114270 COL7A1     
+10 ENSG00000231674 LINC00410  </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩</a>
