@@ -86,7 +86,7 @@
       <h1>package content</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2019-06-13</h4>
+            <h4 class="date">2019-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/content.Rmd"><code>vignettes/content.Rmd</code></a></small>
       <div class="hidden name"><code>content.Rmd</code></div>
@@ -96,7 +96,7 @@
     
     
 <p>Still a draft, to be finished.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hgnc)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hgnc)</span></code></pre></div>
 <p>after you read the <code><a href="../articles/hgnc.html">vignette('hgnc')</a></code></p>
 <div id="section" class="section level1">
 <h1 class="hasAnchor">
@@ -119,9 +119,9 @@
 <p>as_symbol</p>
 <p>melt <code>hgnc_complete_set.txt.gz</code></p>
 <pre><code>for example, Entrez gene ID</code></pre>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co"># the exact parameter should be character, but integer or numeric is also acceptable</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">23141</span>, <span class="dv">5925</span>) <span class="op">%&gt;%</span><span class="st"> </span>hgnc<span class="op">::</span><span class="kw"><a href="https://dongzhuoer.github.io/hgnc/reference/as_symbol.html">as_symbol_from_entrez</a></span>() <span class="co"># </span></a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(magrittr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co"># the exact parameter should be character, but integer or numeric is also acceptable</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">23141</span>, <span class="dv">5925</span>) <span class="op">%&gt;%</span><span class="st"> </span>hgnc<span class="op">::</span><span class="kw"><a href="https://dongzhuoer.github.io/hgnc/reference/as_symbol.html">as_symbol_from_entrez</a></span>() <span class="co"># </span></span></code></pre></div>
 </div>
 <div id="other-feature" class="section level1">
 <h1 class="hasAnchor">
