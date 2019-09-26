@@ -7,8 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Introduction to hgnc • hgnc</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cerulean/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Introduction to hgnc">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
@@ -38,7 +39,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -67,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/dongzhuoer/hgnc">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -80,13 +81,14 @@
 <!--/.navbar -->
 
       
+
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1>Introduction to hgnc</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2019-09-19</h4>
+            <h4 class="date">2019-09-26</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/hgnc.Rmd"><code>vignettes/hgnc.Rmd</code></a></small>
       <div class="hidden name"><code>hgnc.Rmd</code></div>
@@ -95,7 +97,7 @@
 
     
     
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(hgnc)</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(hgnc)</span></code></pre></div>
 <div id="quick-start" class="section level1">
 <h1 class="hasAnchor">
 <a href="#quick-start" class="anchor"></a>quick start</h1>
@@ -257,7 +259,7 @@
 <span id="cb8-13"><a href="#cb8-13"></a>) </span>
 <span id="cb8-14"><a href="#cb8-14"></a></span>
 <span id="cb8-15"><a href="#cb8-15"></a>probe2symbpl &lt;-<span class="st"> </span>probe2id <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb8-16"><a href="#cb8-16"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</span></code></pre></div>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://rdrr.io/r/base/match.html">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</span></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -269,7 +271,7 @@
 <div id="key-difficulty" class="section level2">
 <h2 class="hasAnchor">
 <a href="#key-difficulty" class="anchor"></a>key difficulty</h2>
-<p>Back the original problem, you can find that its fairly easy to “replace” <code>'id4'</code> with <code>'symbol4'</code>, <code>'id5'</code> with <code>'symbol5'</code>, etc (thanks to <code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code>). But how can you “replace” the <code>'id1'</code> and <code>'id2'</code> inside <code>'id1 | id2'</code>?</p>
+<p>Back the original problem, you can find that its fairly easy to “replace” <code>'id4'</code> with <code>'symbol4'</code>, <code>'id5'</code> with <code>'symbol5'</code>, etc (thanks to <code><a href="https://rdrr.io/r/base/match.html">match()</a></code>). But how can you “replace” the <code>'id1'</code> and <code>'id2'</code> inside <code>'id1 | id2'</code>?</p>
 <p>That is what I meet when I want to address a <a href="https://github.com/dongzhuoer/rGEO">biological question</a>, as you can see in the 9th line of <code>probe2ensembl</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a>probe2ensembl <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">9</span>)</span></code></pre></div>
 <pre><code># A tibble: 1 x 2
@@ -305,7 +307,7 @@
 <span id="cb17-6"><a href="#cb17-6"></a>) </span>
 <span id="cb17-7"><a href="#cb17-7"></a></span>
 <span id="cb17-8"><a href="#cb17-8"></a>probe2symbol_long &lt;-<span class="st"> </span>probe2id_long <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb17-9"><a href="#cb17-9"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/match">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</span></code></pre></div>
+<span id="cb17-9"><a href="#cb17-9"></a><span class="st">    </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw"><a href="https://rdrr.io/r/base/match.html">match</a></span>(id, id2symbol<span class="op">$</span>id)]) <span class="op">%T&gt;%</span><span class="st"> </span>print</span></code></pre></div>
 <pre><code># A tibble: 3 x 2
   probe  symbol 
   &lt;chr&gt;  &lt;chr&gt;  
@@ -343,7 +345,7 @@
 <span id="cb2-13"><a href="#cb2-13"></a>)</span></code></pre></div>
 <p>Or create it from scratch (some packages are needed):</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="co"># read probe annotation from a GSE SOFT file</span></span>
-<span id="cb3-2"><a href="#cb3-2"></a>soft_table &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">'extdata/GSE19161_family.soft.gz'</span>, <span class="dt">package =</span> <span class="st">'rGEO'</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>soft_table &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">'extdata/GSE19161_family.soft.gz'</span>, <span class="dt">package =</span> <span class="st">'rGEO'</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
 <span id="cb3-3"><a href="#cb3-3"></a><span class="st">    </span>rGEO<span class="op">::</span><span class="kw">parse_gse_soft</span>(<span class="dt">verbose =</span> F) <span class="op">%&gt;%</span><span class="st"> </span>{.<span class="op">$</span>table}</span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co"># subset part of the table for the purpose of demostration</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a>probe2ensembl &lt;-<span class="st"> </span>soft_table <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/select.html">select</a></span>(<span class="dv">1</span>, <span class="dv">9</span>) <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">41</span><span class="op">:</span><span class="dv">50</span>)</span></code></pre></div>
@@ -358,7 +360,7 @@
 <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">dplyr::transmute</a></code> preserves <code>probe2id$probe</code> - <code>probe2id$id</code> relationship by <em>position</em>
 </li>
 <li>
-<code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code> finds <code>probe2id$id</code> - <code>id2symbol$id</code> relationship by <em>value</em>
+<code><a href="https://rdrr.io/r/base/match.html">match()</a></code> finds <code>probe2id$id</code> - <code>id2symbol$id</code> relationship by <em>value</em>
 </li>
 <li>
 <code>[]</code> finds <code>id2symbol$id</code> - <code>id2symbol$symbol</code> relationship by <em>position</em>
@@ -367,7 +369,7 @@
 <p>Let’s us experience this by an example of <code>'probe4'</code> to <code>'symbol4'</code>:</p>
 <ol style="list-style-type: lower-alpha">
 <li><p>1st element of <code>probe2id$probe</code> -&gt; 1st element of <code>probe2id$id</code>:<br><code>'probe4'</code> is the 1st element of <code>probe2id$probe</code>, so we look for the 1st element of <code>probe2id$id</code>, <code>'id4'</code>.</p></li>
-<li><p><code>'id4'</code> in <code>probe2id$id</code> -&gt; <code>'id4'</code> in <code>id2symbol$id</code>:<br><code>'id4'</code> is the 1st element of <code>probe2id$id</code>, then we look for the 1st element of <code><a href="https://www.rdocumentation.org/packages/base/topics/match">match()</a></code> (which gives the position of <code>probe2id$id</code> in <code>id2symbol$id</code> — <code><a href="https://www.rdocumentation.org/packages/base/topics/c">c(3, 1, 2)</a></code> in this case). We get <code>3</code>, so we look for the 3rd element of <code>id2symbol$id</code>, the exact value of <code>'id4'</code>.</p></li>
+<li><p><code>'id4'</code> in <code>probe2id$id</code> -&gt; <code>'id4'</code> in <code>id2symbol$id</code>:<br><code>'id4'</code> is the 1st element of <code>probe2id$id</code>, then we look for the 1st element of <code><a href="https://rdrr.io/r/base/match.html">match()</a></code> (which gives the position of <code>probe2id$id</code> in <code>id2symbol$id</code> — <code><a href="https://rdrr.io/r/base/c.html">c(3, 1, 2)</a></code> in this case). We get <code>3</code>, so we look for the 3rd element of <code>id2symbol$id</code>, the exact value of <code>'id4'</code>.</p></li>
 <li><p>3rd element of <code>id2symbol$id</code> -&gt; 3rd element of <code>id2symbol$symbol</code>:<br>
 finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, thus we look for the 3rd element of <code>id2symbol$symbol</code>, <code>'symbol4'</code>.</p></li>
 </ol>
@@ -382,16 +384,16 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <pre><code># A tibble: 10 x 2
    ensembl         symbol    
    &lt;chr&gt;           &lt;chr&gt;     
- 1 ENSG00000211914 IGHD6-19  
- 2 ENSG00000277985 SNORA67   
- 3 ENSG00000226864 ATE1-AS1  
- 4 ENSG00000130723 PRRC2B    
- 5 ENSG00000277142 LINC00235 
- 6 ENSG00000253977 MTCO2P4   
- 7 ENSG00000225509 AIFM1P1   
- 8 ENSG00000259281 LINGO1-AS2
- 9 ENSG00000177673 TEX44     
-10 ENSG00000203645 LINC00501 </code></pre>
+ 1 ENSG00000239115 RNU7-67P  
+ 2 ENSG00000271584 LINC02550 
+ 3 ENSG00000258651 SEC23A-AS1
+ 4 ENSG00000180389 ATP5F1EP2 
+ 5 ENSG00000125454 SLC25A19  
+ 6 ENSG00000204091 TDRG1     
+ 7 ENSG00000232192 KIF26B-AS1
+ 8 ENSG00000231253 LINC01640 
+ 9 ENSG00000163697 APBB2     
+10 ENSG00000252577 SCARNA20  </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩︎</a>
@@ -401,6 +403,7 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+
         <div id="tocnav">
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
@@ -421,17 +424,20 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 </div>
 
 
+
       <footer><div class="copyright">
   <p>Developed by Zhuoer Dong.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
 </div>
+
       </footer>
 </div>
 
   
+
 
   </body>
 </html>
