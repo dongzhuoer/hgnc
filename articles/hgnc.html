@@ -88,7 +88,7 @@
       <h1>Introduction to hgnc</h1>
                         <h4 class="author">Zhuoer Dong</h4>
             
-            <h4 class="date">2019-09-26</h4>
+            <h4 class="date">2019-10-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/dongzhuoer/hgnc/blob/master/vignettes/hgnc.Rmd"><code>vignettes/hgnc.Rmd</code></a></small>
       <div class="hidden name"><code>hgnc.Rmd</code></div>
@@ -382,18 +382,18 @@ finally, <code>'id4'</code> is the 3rd element of `<code>id2symbol$id</code>, th
 <p>As for replacing all <code>'id'</code> with <code>'symbol'</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(<span class="dv">10</span>)</span></code></pre></div>
 <pre><code># A tibble: 10 x 2
-   ensembl         symbol    
-   &lt;chr&gt;           &lt;chr&gt;     
- 1 ENSG00000239115 RNU7-67P  
- 2 ENSG00000271584 LINC02550 
- 3 ENSG00000258651 SEC23A-AS1
- 4 ENSG00000180389 ATP5F1EP2 
- 5 ENSG00000125454 SLC25A19  
- 6 ENSG00000204091 TDRG1     
- 7 ENSG00000232192 KIF26B-AS1
- 8 ENSG00000231253 LINC01640 
- 9 ENSG00000163697 APBB2     
-10 ENSG00000252577 SCARNA20  </code></pre>
+   ensembl         symbol     
+   &lt;chr&gt;           &lt;chr&gt;      
+ 1 ENSG00000107833 NPM3       
+ 2 ENSG00000160282 FTCD       
+ 3 ENSG00000182070 OR52A1     
+ 4 ENSG00000236256 DIAPH2-AS1 
+ 5 ENSG00000225121 EEF1B2P5   
+ 6 ENSG00000255819 KLRC4-KLRK1
+ 7 ENSG00000266971 OR4F8P     
+ 8 ENSG00000163013 FBXO41     
+ 9 ENSG00000117399 CDC20      
+10 ENSG00000259144 RANBP20P   </code></pre>
 </li>
 </ul>
 <a href="#fnref5" class="footnote-back">↩︎</a>
