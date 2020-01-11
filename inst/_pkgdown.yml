@@ -8,7 +8,7 @@ template:
 reference:
     - title: "reshape map"
       desc: >
-          convert map between "long" and "wide" format
+          generic interface to convert map between "long" and "wide" format
       contents: ends_with("_map")
     - title: "as symbol"
       desc: >

@@ -13,7 +13,7 @@ melt_map(df, id, measure, sep_pattern = NA)
 
 \item{measure}{string. name of a character variable in \code{df}, its elements needn't to be unique and contain multiple values (we use \code{\link[stringr:str_split]{stringr::str_split()}} to sperate them by \code{sep_pattern})}
 
-\item{sep_pattern}{string. see \code{measure}, note that it is a \emph{pattern}, for example, '|' should be '\|'}
+\item{sep_pattern}{string. see \code{measure}, note that it is a \emph{pattern}, for example, '|' should be '\\|'}
 }
 \value{
 tibble. column names are \code{id} and \code{measure}.
@@ -31,6 +31,7 @@ tibble::tribble(
 
 }
 \seealso{
-Other mapping: \code{\link{cast_map}}
+Other mapping: 
+\code{\link{cast_map}()}
 }
 \concept{mapping}

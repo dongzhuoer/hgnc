@@ -43,6 +43,6 @@ haha
 }
 \section{Caution}{
  \code{as_symbol_from_genbank()} ignores transcript id or version
-number, anyhow, the trailing \code{.\\d}.
+number, anyhow, the trailing \verb{.\\\\d}.
 }
 

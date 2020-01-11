@@ -22,6 +22,7 @@ tibble. column names are \code{id} and \code{measure}.
 convert a "long" map into a "wide" one
 }
 \seealso{
-Other mapping: \code{\link{melt_map}}
+Other mapping: 
+\code{\link{melt_map}()}
 }
 \concept{mapping}
