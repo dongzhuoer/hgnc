@@ -26,12 +26,13 @@ NULL
 melt_map <- function(df, id, measure, sep_pattern = NA) {
 	df %<>% dplyr::select(!!id, !!measure) %>% dplyr::filter_all(dplyr::all_vars(!is.na(.)));
 	one2many <- sep_pattern %>% {if (is.na(.)) rep(F, nrow(df)) else stringr::str_detect(df[[measure]], .)} ;
+    if (all(!one2many)) return(df)
 
 	dplyr::bind_rows(
 		dplyr::filter(df, one2many) %>% plyr::dlply(id, . %>% {
 			measures <- stringr::str_split(.[[measure]], sep_pattern)[[1]];
 			dplyr::tibble(!!id := .[[id]], !!measure := measures)
-		}),
+		}) %>% dplyr::bind_rows(),
 		dplyr::filter(df, !one2many)
 	)
 }

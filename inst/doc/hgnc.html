@@ -13,7 +13,7 @@
 
 <meta name="author" content="Zhuoer Dong" />
 
-<meta name="date" content="2020-01-12" />
+<meta name="date" content="2020-07-31" />
 
 <title>Introduction to hgnc</title>
 
@@ -27,6 +27,22 @@ document.addEventListener('DOMContentLoaded', function(e) {
     if (!/^h[1-6]$/i.test(h.tagName)) continue;  // it should be a header h1-h6
     a = h.attributes;
     while (a.length > 0) h.removeAttribute(a[0].name);
+  }
+});
+</script>
+<script>// Hide empty <a> tag within highlighted CodeBlock for screen reader accessibility (see https://github.com/jgm/pandoc/issues/6352#issuecomment-626106786) -->
+// v0.0.1
+// Written by JooYoung Seo (jooyoung@psu.edu) and Atsushi Yasumoto on June 1st, 2020.
+
+document.addEventListener('DOMContentLoaded', function() {
+  const codeList = document.getElementsByClassName("sourceCode");
+  for (var i = 0; i < codeList.length; i++) {
+    var linkList = codeList[i].getElementsByTagName('a');
+    for (var j = 0; j < linkList.length; j++) {
+      if (linkList[j].innerHTML === "") {
+        linkList[j].setAttribute('aria-hidden', 'true');
+      }
+    }
   }
 });
 </script>
@@ -144,7 +160,7 @@ a.sourceLine {
 <section class="page-header">
 <h1 class="title toc-ignore project-name">Introduction to hgnc</h1>
 <h4 class="author project-author">Zhuoer Dong</h4>
-<h4 class="date project-date">2020-01-12</h4>
+<h4 class="date project-date">2020-07-31</h4>
 </section>
 
 
@@ -287,12 +303,12 @@ a.sourceLine {
 <span id="cb11-7"><a href="#cb11-7"></a><span class="co"># A tibble: 6 x 2</span></span>
 <span id="cb11-8"><a href="#cb11-8"></a>  id    symbol </span>
 <span id="cb11-9"><a href="#cb11-9"></a>  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st"> </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">  </span></span>
-<span id="cb11-10"><a href="#cb11-10"></a><span class="dv">1</span> id4   symbol4</span>
-<span id="cb11-11"><a href="#cb11-11"></a><span class="dv">2</span> id5   symbol5</span>
-<span id="cb11-12"><a href="#cb11-12"></a><span class="dv">3</span> id3   symbol3</span>
-<span id="cb11-13"><a href="#cb11-13"></a><span class="dv">4</span> id1   symbol1</span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="dv">1</span> id2   symbol2</span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="dv">2</span> id4   symbol4</span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="dv">3</span> id1   symbol1</span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="dv">4</span> id3   symbol3</span>
 <span id="cb11-14"><a href="#cb11-14"></a><span class="dv">5</span> id6   symbol6</span>
-<span id="cb11-15"><a href="#cb11-15"></a><span class="dv">6</span> id2   symbol2</span></code></pre></div>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="dv">6</span> id5   symbol5</span></code></pre></div>
 <p>and use the following code <a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a></p>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a>dplyr<span class="op">::</span><span class="kw">transmute</span>(probe2id_easy, probe, <span class="dt">symbol =</span> id2symbol<span class="op">$</span>symbol[<span class="kw">match</span>(id, id2symbol<span class="op">$</span>id)])</span>
 <span id="cb12-2"><a href="#cb12-2"></a><span class="co"># A tibble: 3 x 2</span></span>
@@ -312,7 +328,7 @@ a.sourceLine {
 <li><p>1st element of <code>probe2id$probe</code> -&gt; 1st element of <code>probe2id$id</code>:<br />
 <code>&quot;probe4&quot;</code> is the 1st element of <code>probe2id$probe</code>, so we look for the 1st element of <code>probe2id$id</code>, <code>&quot;id4&quot;</code>.</p></li>
 <li><p><code>&quot;id4&quot;</code> in <code>probe2id$id</code> -&gt; <code>&quot;id4&quot;</code> in <code>id2symbol$id</code>:<br />
-<code>&quot;id4&quot;</code> is the 1st element of <code>probe2id$id</code>, then we look for the 1st element of <code>match()</code> (which gives the position of <code>probe2id$id</code> in <code>id2symbol$id</code> — <code>c(NA, 3)</code> in this case). We get <code>3</code>, so we look for the 3rd element of <code>id2symbol$id</code>, the exact value of <code>&quot;id4&quot;</code>.</p></li>
+<code>&quot;id4&quot;</code> is the 1st element of <code>probe2id$id</code>, then we look for the 1st element of <code>match()</code> (which gives the position of <code>probe2id$id</code> in <code>id2symbol$id</code> — <code>c(NA, 4)</code> in this case). We get <code>3</code>, so we look for the 3rd element of <code>id2symbol$id</code>, the exact value of <code>&quot;id4&quot;</code>.</p></li>
 <li><p>3rd element of <code>id2symbol$id</code> -&gt; 3rd element of <code>id2symbol$symbol</code>:<br />
 finally, <code>&quot;id4&quot;</code> is the 3rd element of `<code>id2symbol$id</code>, thus we look for the 3rd element of <code>id2symbol$symbol</code>, <code>&quot;symbol4&quot;</code>.</p></li>
 </ol>
@@ -332,11 +348,11 @@ finally, <code>&quot;id4&quot;</code> is the 3rd element of `<code>id2symbol$id<
 <li><p>As for replacing all <code>&quot;id&quot;</code> with <code>&quot;symbol&quot;</code>, I use <code>id2symbol</code> just to simplify the problem, the id-symbol map in the real world is usually something like:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a>hgnc<span class="op">::</span>ensembl2symbol <span class="op">%&gt;%</span><span class="st"> </span>dplyr<span class="op">::</span><span class="kw">sample_n</span>(<span class="dv">3</span>)</span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co"># A tibble: 3 x 2</span></span>
-<span id="cb14-3"><a href="#cb14-3"></a>  ensembl         symbol </span>
-<span id="cb14-4"><a href="#cb14-4"></a>  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">           </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">  </span></span>
-<span id="cb14-5"><a href="#cb14-5"></a><span class="dv">1</span> ENSG00000122565 CBX3   </span>
-<span id="cb14-6"><a href="#cb14-6"></a><span class="dv">2</span> ENSG00000232423 PRAMEF6</span>
-<span id="cb14-7"><a href="#cb14-7"></a><span class="dv">3</span> ENSG00000105879 CBLL1  </span></code></pre></div></li>
+<span id="cb14-3"><a href="#cb14-3"></a>  ensembl         symbol   </span>
+<span id="cb14-4"><a href="#cb14-4"></a>  <span class="op">&lt;</span>chr<span class="op">&gt;</span><span class="st">           </span><span class="er">&lt;</span>chr<span class="op">&gt;</span><span class="st">    </span></span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="dv">1</span> ENSG00000125703 ATG4C    </span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="dv">2</span> ENSG00000227289 HSFY3P   </span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="dv">3</span> ENSG00000099251 HSD17B7P2</span></code></pre></div></li>
 </ul>
 </div>
 <div id="solution" class="section level2" number="2.4">
